@@ -41,6 +41,37 @@ var ProductsPage = React.createClass({
                 layout={this.state.layout}
                 selectionMode="single"
                 tapBehavior="directSelect" />
+
+                <div id="basicBindingInputs">
+    <ol id="basicBindingTextInputList">
+        <li>
+            <label for="basicBindingInputText">
+                Text:
+            </label>
+            <input className="win-textbox" type="text" id="basicBindingInputText" />
+        </li>
+    </ol>
+    <ol id="basicBindingColorInputList">
+        <li>
+            <label for="basicBindingInputRed">
+                Red:
+            </label>
+            <input className="win-textbox" type="text" id="basicBindingInputRed" />
+        </li>
+        <li>
+            <label for="basicBindingInputGreen">
+                Green:
+            </label>
+            <input className="win-textbox" type="text" id="basicBindingInputGreen" />
+        </li>
+        <li>
+            <label for="basicBindingInputBlue">
+                Blue:
+            </label>
+            <input className="win-textbox" type="text" id="basicBindingInputBlue" />
+        </li>
+    </ol>
+</div>
             </div>    
         );
     }
