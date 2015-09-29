@@ -34,3 +34,11 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
+
+
+node_modules/
+dist/
+.DS_Store
+bundle.js
+output/
+realease/
