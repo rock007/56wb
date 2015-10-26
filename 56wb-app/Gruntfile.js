@@ -1,110 +1,115 @@
 module.exports = function(grunt) {
-   
+
    var path = require('path');
 
     // 配置
     grunt.initConfig({
         pkg : grunt.file.readJSON('package.json'),
-        concat: {
-              domop: {
-                  src: ['output/**/*.js'],
-                  dest: 'realease/wb-app-h5.js'
-              }
-          },
-          uglify: {
-              my_target: {
-                files: {
-                  'realease/all_in_one.min.js': ['realease/all_in_one.js']
-                }
-              }
-          },
-          typescript: {
-            base: {
-                 src: ['src/typescripts/*.ts'],
-                 dest: 'output/ts',
-                 options: {
-                     module: 'amd',
-                     sourcemap: true,
-                     declaration: false
-                 }
-             }
+        clean: {
+            options: {
+              force: true
+            },
+            all: ['dist/']
         },
-         connect: {
-            server: {
-              options: {
-                port: 8000,
-                keepalive: true,
-                base: ''
-              }
+        uglify: {
+          options: {
+            banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+          },
+          build: {
+            files: {
+                 'dest/bundle.min.js': ['dest/bundle.js','fakeData.js'],
+                 'dest/wb-apply-bundle.min.js': ['dest/wb-apply-bundle.js']
+             }
+           }
+      },
+      connect: {
+           server: {
+             options: {
+               port: 8010,
+               keepalive: true,
+               base: ''
+             }
+           }
+      },
+      webpack: {
+
+          abc:{
+              cache: true,
+              entry: './src/jsx/index.jsx',
+              output: {
+                filename: 'dest/bundle.js'
+              },
+              module: {
+                loaders: [
+                  {test: /\.jsx/, loader: 'jsx-loader'}
+                ]
+              },
+              resolve: {
+                alias: {
+                  'fakeData.js': path.join(__dirname, 'src/fakeData.js')
+                }
+              },
+              externals: {
+                'react': 'React',
+                'react/addons': 'React'
+              },
+              watch: true, // use webpacks watcher
+              // You need to keep the grunt process alive
+
+              keepalive: true, // don't finish the grunt task
+              // Use this in combination with the watch option
+
+              inline: true  // embed the webpack-dev-server runtime into the bundle
+              // Defaults to false
+
+            },
+        ts:{
+            entry: './src/ts/index.ts',
+            output: {
+              filename: 'dest/ts_bundle.js'
+            },
+            resolve: {
+              // Add `.ts` and `.tsx` as a resolvable extension.
+              extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+            },
+            module: {
+              loaders: [
+                // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+                { test: /\.tsx?$/, loader: 'ts-loader' }
+              ]
+            },
+            watch: true,
+            keepalive: true,
+            inline: true
+          }
+        },
+        concurrent: {
+            target4: {
+                tasks: ['webpack:ts','webpack:abc','connect'],
+                options: {
+                  logConcurrentOutput: true
+                }
             }
-      },
-      react: {
-          dynamic_mappings: {
-            files: [
-            {
-              expand: true,
-              cwd: 'src/jsx',
-              src: ['*.jsx'],
-              dest: 'output',
-              ext: '.js'
-            }
-          ]
-      }
-   },
-   webpack: {
-
-    abc:{
-cache: true,
-      entry: './src/jsx/index.jsx',
-      output: {
-        filename: 'bundle.js'
-      },
-      module: {
-      loaders: [
-        {test: /\.jsx/, loader: 'jsx-loader'}
-        ]
-      },
-    resolve: {
-      alias: {
-        'fakeData.js': path.join(__dirname, 'src/fakeData.js')
-      }
-    },
-    externals: {
-        'react': 'React',
-        'react/addons': 'React'
-    },
-    watch: true, // use webpacks watcher
-    // You need to keep the grunt process alive
-
-    keepalive: true, // don't finish the grunt task
-    // Use this in combination with the watch option
-
-    inline: true  // embed the webpack-dev-server runtime into the bundle
-    // Defaults to false
-
-  }
-    }    
+          }
    });
 
-      // 载入concat和uglify插件，分别对于合并和压缩
-      grunt.loadNpmTasks('grunt-contrib-concat');
-      grunt.loadNpmTasks('grunt-contrib-uglify');
-      //
-      grunt.loadNpmTasks('grunt-typescript');
-      grunt.loadNpmTasks('grunt-contrib-connect');
+      // Load the plugin that provides the "uglify" task.
 
-      //react
-      grunt.loadNpmTasks('grunt-react');
+      grunt.loadNpmTasks('grunt-contrib-clean');
+
+      grunt.loadNpmTasks('grunt-contrib-uglify');
+
+      grunt.loadNpmTasks('grunt-contrib-connect');
 
       grunt.loadNpmTasks('grunt-webpack');
 
-      // 注册任务 ,'concat','uglify'
-      grunt.registerTask('default', ['typescript:base','react','concat']);
+      grunt.loadNpmTasks('grunt-concurrent');
 
-      grunt.registerTask('compile', ['typescript:base','react']);
-      
-      grunt.registerTask('run', ['connect']);
+      grunt.registerTask('compile', ['webpack','uglify']);
 
-      grunt.registerTask('package', ['webpack']);
-      
+      grunt.registerTask('compress', ['webpack:ts','uglify']);
+
+      // Default task(s).
+      grunt.registerTask('default', ['clean','concurrent:target4']);
+
   };
