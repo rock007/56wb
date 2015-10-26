@@ -14,7 +14,7 @@
   <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<java.version>1.7</java.version>
-	<boot.version>1.2.5.RELEASE</boot.version>
+	<boot.version>1.2.7.RELEASE</boot.version>
 </properties>
 
   <dependencies>
