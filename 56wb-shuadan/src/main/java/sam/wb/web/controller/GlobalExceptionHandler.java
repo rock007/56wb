@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-     
+     /****
     @ExceptionHandler(Exception.class)
     public String handleSQLException(HttpServletRequest request, Exception ex){
     	System.out.println("eccezione globale");
         return "redirect:/";
     }
+    
+    ***/
     
 }

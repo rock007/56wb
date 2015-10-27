@@ -49,11 +49,6 @@
 		</dependency>
 
 		<dependency>
-    		<groupId>org.jdom</groupId>
-    		<artifactId>jdom2</artifactId>
-    	</dependency>	
-
-		<dependency>
   			<groupId>com.github.cage</groupId>
   			<artifactId>cage</artifactId>
   			<version>1.0</version>
@@ -79,6 +74,11 @@
 			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
 		
+		<dependency>
+    		<groupId>org.jdom</groupId>
+    		<artifactId>jdom2</artifactId>
+    	</dependency>
+    	
 		<dependency>
      		<groupId>com.alibaba</groupId>
     		 <artifactId>fastjson</artifactId>
