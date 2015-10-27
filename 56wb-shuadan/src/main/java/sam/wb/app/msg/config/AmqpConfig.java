@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import sam.wb.app.msg.receiver.MsgReceiver;
 
-@Component
+//@Component
 public class AmqpConfig {
 
 	public final static String queueName = "wb-msg";

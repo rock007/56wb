@@ -32,6 +32,8 @@ local.properties
 # sbteclipse plugin
 .target
 
+target/
+
 # TeXlipse plugin
 .texlipse
 
@@ -42,5 +44,6 @@ dist/
 bundle.js
 output/
 realease/
+
 
 *.class
