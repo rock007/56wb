@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>	
 	<title>新增、编辑</title>
 	<link href="../plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
-	<link href="../css/site.css" rel="stylesheet" />	
+	<link href="../css/site.css" rel="stylesheet" />
+		
 </head>
 <body>
 
@@ -15,10 +15,10 @@
 <div class="container" style="padding-top: 55px;" >
 	
 	<div class="row">
-		<form action="edit.html" method="post" id="blog_edit_form">
+		<form  action="submit-blog-edit.action" role="form" method="post" id="blog_edit_form">
 		<div class="col-xs-12">
 			 <div class="form-group">
-				<input type="text" name="subject_txt" class="form-control"/>
+				<input type="text" name="title" id="title" maxlength="100" class="form-control"/>
 			</div>
 		
 			<iframe id="editor" style="width:100%; height:450px;"  onload="top.editor=this.contentWindow.editor"  src="../plugins/squire/document.html"></iframe>
@@ -45,8 +45,10 @@
 
 <div th:include="fragments/footer::footer">footer</div>
  
-<script src="../js/jquery.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
 <script src="../plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="../js/site.js"></script>
 
 <script type="text/javascript" src="../plugins/bootstrapvalidator/bootstrapValidator.min.js"></script>
 <script type="text/javascript" src="../plugins/bootstrapvalidator/language/zh_CN.js"></script>
@@ -59,7 +61,7 @@ function formValidator(){
 	$('#blog_edit_form').bootstrapValidator({
 		message: '输入信息验证不通过',
 		fields: {
-			subject_txt: {
+			title: {
 				message: '标题信息输入不正确！',
 				validators: {
 					notEmpty: {
@@ -67,7 +69,7 @@ function formValidator(){
 					},
 					stringLength: {
 						min: 2,
-						max: 15,
+						max: 100,
 						message: '标题不能小于2个字，也不能大于100个字！'
 					}
 				}
@@ -95,9 +97,11 @@ function formValidator(){
           	console.log(result);
 
               if(result.success){
-              	//go2page(result.data);
+              	
+            	  go2page(result.data);
+              	
               }else{
-              	 //message(result.msg);
+              	 message(result.msg);
               }
           }
       });

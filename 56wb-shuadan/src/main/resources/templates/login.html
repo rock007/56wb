@@ -1,20 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>欢迎登录 </title>
+        <link href="/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="/css/site.css" rel="stylesheet" />	    
+		<!--[if lt IE 9]>
+    	<script src="/plugins/html5shiv/html5shiv.min.js"></script>
+    	<script src="/plugins/respond/respond.min.js"></script>
+    	<![endif]-->
+    
     </head>
     <body>
-        <div th:if="${param.error}">
-            Invalid username and password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-        </form>
-    </body>
+    <div class="container" style="padding-top: 55px;" >
+	
+		<div class="row">
+		
+			<div class="col-xs-12">
+		        
+        		<form th:action="login.html" method="post">
+        		
+        			<div class="form-group">
+						<input type="text" name="username" class="form-control" placeholder="输入用户名"/>
+					</div>
+					<div class="form-group">
+						<input type="password" name="password" class="form-control" placeholder="输入密码"/>
+					</div>			
+					<div class="form-group text-center">
+						<input type="submit" class="btn btn-default" value="Sign In"/>
+					</div>
+				
+				<div th:if="${param.error}">
+            		Invalid username and password.
+        		</div>
+        		<div th:if="${param.logout}">
+            		You have been logged out.
+        		</div>
+        			<p class="text-danger"></p>
+        		</form>        	
+			</div>		
+		
+		</div>
+	</div>	        
+   <div th:include="fragments/footer::footer">footer</div>
+</body>
 </html>

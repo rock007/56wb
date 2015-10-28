@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import reactor.bus.Event;
 import reactor.bus.EventBus;
 import sam.wb.app.msg.config.AmqpConfig;
+import sam.wb.core.model.JsonMsg;
 
 
 @Controller
@@ -40,12 +41,12 @@ public class HomeController {
 		return "login";
 	}
 	
-	@RequestMapping("/notify.html")
-	public @ResponseBody String doBusNotify(String msg){
+	@RequestMapping("/notify.json")
+	public @ResponseBody JsonMsg doBusNotify(String msg){
 		
 		eventBus.notify("quotes", Event.wrap(msg));
 		
-		return "ok:"+msg;
+		return new JsonMsg(true,"测试数据"+msg);
 	}
 	
 	@RequestMapping("/send-msgq.html")

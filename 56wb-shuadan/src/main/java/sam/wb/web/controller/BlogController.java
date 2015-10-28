@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,9 +36,15 @@ public class BlogController {
 	@Autowired
 	BlogArticleRepository blogArticleRepository;
 	
+	@ExceptionHandler
+	public @ResponseBody JsonMsg handleException(HttpServletRequest request, Exception ex){
+	   
+		logger.error("handleException", ex);
+		return new JsonMsg(false,ex.getMessage()) ;
+	}
 	@RequestMapping("/{userName}/articles")
 	public  String index(Map<String, Object> model,@PathVariable String userName,
-			@RequestParam(value="page",required=false,defaultValue="1")  int page,
+			@RequestParam(value="page",required=false,defaultValue="0")  int page,
 			@RequestParam(value="limit",required=false,defaultValue="20")  int limit) {
 		
 		Page<Article> articlePage= blogArticleRepository.findByCreatUserOrderByIdDesc(userName,new PageRequest(page, limit));
@@ -57,7 +66,7 @@ public class BlogController {
 		return "blog/edit";
 	}
 	
-	@RequestMapping(value="/edit.html",method = RequestMethod.POST)
+	@RequestMapping(value="/submit-blog-edit.action",method = RequestMethod.POST)
 	public @ResponseBody JsonMsg submit_edit(@ModelAttribute Article m) {
 		
 		JsonMsg result=null;
@@ -92,6 +101,7 @@ public class BlogController {
 				m.setUpdate_date(new Date());
 				m.setStatus(0);
 				m.setView_num(0);
+				m.setCreatUser(App.getCurUser().getUsername());
 				
 				blogArticleRepository.save(m);
 				

@@ -28,13 +28,12 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
                 .antMatchers( "/public/**").permitAll()
                 .antMatchers( "/","/static/**").permitAll()
-                .antMatchers( "/","*.html").permitAll()
-                //.antMatchers("/","/upload/**").permitAll()
-                //.antMatchers("/product-img-**").permitAll()             
-                //.antMatchers("/ajax/**").permitAll()
-                //.antMatchers("/**.json").permitAll()
-                //.antMatchers("/**.html").permitAll()
-                //.anyRequest().permitAll()//.fullyAuthenticated()
+                .antMatchers("/plugins/**").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/blog/**/articles**").permitAll()                
+                .antMatchers("/","**.json").permitAll()                
+                .anyRequest().fullyAuthenticated()
                 .and()
                 	.formLogin()         
                 	.loginPage("/login.html")
@@ -56,8 +55,6 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(userDetailsService);
-        
-              
     }
 
 }

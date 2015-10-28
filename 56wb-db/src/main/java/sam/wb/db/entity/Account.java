@@ -27,7 +27,7 @@ public class Account {
 	String description;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="system_user_system_role",
+	@JoinTable(name="system_user_roles",
 		joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
 		inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
 	Set<Role> roles = new HashSet<Role>();
