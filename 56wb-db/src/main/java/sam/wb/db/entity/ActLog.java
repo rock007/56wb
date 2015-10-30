@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "wb_act_log")
+@Table(name = "act_log")
 public class ActLog {
 
 	@Id

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "system_roles")
+@Table(name = "sys_roles")
 public class Role {
 
 	@Id
@@ -23,7 +23,7 @@ public class Role {
 	String authority;
 	
 	@ManyToMany(mappedBy = "roles")
-	Set<Account> users = new HashSet<Account>();
+	Set<UserAccount> users = new HashSet<UserAccount>();
 
 	public Long getId() {
 		return id;
@@ -41,11 +41,11 @@ public class Role {
 		this.authority = authority;
 	}
 
-	public Set<Account> getUsers() {
+	public Set<UserAccount> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Set<Account> users) {
+	public void setUsers(Set<UserAccount> users) {
 		this.users = users;
 	}
 	

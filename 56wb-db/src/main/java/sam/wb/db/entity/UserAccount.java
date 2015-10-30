@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "wb_account")
+@Table(name = "sys_account")
 public class UserAccount {
 
 	@Id
@@ -26,9 +26,6 @@ public class UserAccount {
 	
 	private Integer sex;
 	
-	@NotNull
-	private String role;
-	
 	private String province;
 	
 	private String city;
@@ -45,6 +42,12 @@ public class UserAccount {
 	
 	private String lastipaddress;
 
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="sys_user_roles",
+		joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
+		inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
+	Set<Role> roles = new HashSet<Role>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -83,14 +86,6 @@ public class UserAccount {
 
 	public void setSex(Integer sex) {
 		this.sex = sex;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 	public String getProvince() {
@@ -157,5 +152,12 @@ public class UserAccount {
 		this.lastipaddress = lastipaddress;
 	}
 	
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 	
 }

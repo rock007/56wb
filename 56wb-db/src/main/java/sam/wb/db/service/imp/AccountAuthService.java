@@ -17,7 +17,9 @@ import org.springframework.stereotype.Component;
 
 import sam.wb.db.entity.Account;
 import sam.wb.db.entity.Role;
+import sam.wb.db.entity.UserAccount;
 import sam.wb.db.repository.AccountRepository;
+import sam.wb.db.repository.UserAccountRepository;
 
 @Component("accountAuthService")
 public class AccountAuthService implements UserDetailsService{
@@ -25,13 +27,13 @@ public class AccountAuthService implements UserDetailsService{
     private static final Logger loggger = LoggerFactory.getLogger(AccountAuthService.class);
     
     @Autowired
-    private  AccountRepository accountRepository;
+    private  UserAccountRepository accountRepository;
     
 	@Override
 	public UserDetails loadUserByUsername(String name)
 			throws UsernameNotFoundException {
 		
-		final Account oneUser= accountRepository.findByUsername(name);
+		final UserAccount oneUser= accountRepository.findByName(name);
 
 		if(oneUser==null){
 			
@@ -65,13 +67,13 @@ public class AccountAuthService implements UserDetailsService{
 	      
 	      @Override
 	      public String getUsername() {
-	        return oneUser.getUsername();
+	        return oneUser.getName();
 	      }
 	      
 	      @Override
 	      public String getPassword() {
 	       
-	    	  return oneUser.getPassword();
+	    	  return oneUser.getPwd();
 	      }
 	      
 	      @Override
