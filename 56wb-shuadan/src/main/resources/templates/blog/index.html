@@ -20,12 +20,12 @@
 		</div>
 		<div class="col-xs-12 col-md-8">
 		
-			 <table>
+  <table>
     <tbody>
       <tr th:each="row,rowStat : ${list}">
         <td th:text="${rowNum}">1</td>
-        <td th:text="${row.title}">Thymus Thymi</td>
-        <td th:text="${row.content}">12</td>
+        <td th:text="${row.title}">标题</td>
+        <td th:text="${row.content}">内容</td>
       </tr>
     </tbody>
   </table>
