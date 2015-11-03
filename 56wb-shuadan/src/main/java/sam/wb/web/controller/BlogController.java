@@ -47,7 +47,7 @@ public class BlogController {
 			@RequestParam(value="page",required=false,defaultValue="0")  int page,
 			@RequestParam(value="limit",required=false,defaultValue="20")  int limit) {
 		
-		Page<Article> articlePage= blogArticleRepository.findByCreatUserOrderByIdDesc(userName,new PageRequest(page, limit));
+		Page<Article> articlePage= blogArticleRepository.findByCreateUserOrderByIdDesc(userName,new PageRequest(page, limit));
 		
 		model.put("list", articlePage.getContent());
 		model.put("rowNum", articlePage.getTotalElements());
@@ -101,7 +101,7 @@ public class BlogController {
 				m.setUpdate_date(new Date());
 				m.setStatus(0);
 				m.setView_num(0);
-				m.setCreatUser(App.getCurUser().getUsername());
+				m.setCreateUser(App.getCurUser().getUsername());
 				
 				blogArticleRepository.save(m);
 				

@@ -1,4 +1,4 @@
-package sam.wb.db.entity;
+package sam.wb.db.entity.wb;
 
 import java.util.Date;
 import java.util.HashSet;

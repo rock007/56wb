@@ -12,6 +12,6 @@ public interface BlogArticleRepository extends CrudRepository<Article, Long>,
 	
 	Article findById(Long id);
 	
-	Page<Article> findByCreatUserOrderByIdDesc(String username, Pageable pageable);
+	Page<Article> findByCreateUserOrderByIdDesc(String username, Pageable pageable);
 	
 }

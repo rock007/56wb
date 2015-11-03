@@ -15,7 +15,6 @@ var Data = require('fakeData.js');
 
 //var Data=path.join(__dirname, 'FakeData.js');
 
-
 var splitViewId = "rootSplitView";
 
 var splitViewConfigs = {
@@ -74,7 +73,7 @@ var App = React.createClass({
     handleResize: function () {
         var prevMode = this.state.mode;
         var nextMode = getMode();
-            
+
         if (prevMode !== nextMode) {
             this.setState({ mode: nextMode });
         }
@@ -129,7 +128,7 @@ var App = React.createClass({
     },
     componentWillUnmount: function () {
         window.removeEventListener("resize", this.handleResize);
-        
+
     },
     renderPeoplePage: function () {
         return (
@@ -145,12 +144,12 @@ var App = React.createClass({
         return <OtherPage location={this.state.location} />
     },
     renderChartPage:function(){
-        
+
         return <ChartPage location={this.state.location} />
 
     },
     renderProductsPage:function(){
-        
+
         return <ProductsPage location={this.state.location} />
 
     },
@@ -160,11 +159,11 @@ var App = React.createClass({
         if (this.state.location.length === 0 || this.state.location[0] === "people") {
             return this.renderPeoplePage();
         }else if(this.state.location[0] === "chart"){
-            
+
             return this.renderChartPage();
 
         }else if(this.state.location[0] === "product-list"){
-            
+
             return this.renderProductsPage();
 
         } else {

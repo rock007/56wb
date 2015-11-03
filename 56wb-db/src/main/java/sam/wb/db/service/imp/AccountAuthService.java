@@ -15,10 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import sam.wb.db.entity.Account;
 import sam.wb.db.entity.Role;
 import sam.wb.db.entity.UserAccount;
-import sam.wb.db.repository.AccountRepository;
 import sam.wb.db.repository.UserAccountRepository;
 
 @Component("accountAuthService")

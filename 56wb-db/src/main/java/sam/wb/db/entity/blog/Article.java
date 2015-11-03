@@ -30,8 +30,8 @@ public class Article {
 	
 	private Integer view_num;
 	
-	@Column(name = "creat_user")
-	private String creatUser;
+	@Column(name = "create_user")
+	private String createUser;
 	
 	private Date create_date;
 	
@@ -85,13 +85,12 @@ public class Article {
 		this.view_num = view_num;
 	}
 
-
-	public String getCreatUser() {
-		return creatUser;
+	public String getCreateUser() {
+		return createUser;
 	}
 
-	public void setCreatUser(String creatUser) {
-		this.creatUser = creatUser;
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
 	}
 
 	public Date getCreate_date() {

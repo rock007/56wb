@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>	
+	<title>新增、编辑</title>
+	<link href="../plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
+	<link href="../css/site.css" rel="stylesheet" />
+		
+</head>
+<body>
+
+<div th:replace="fragments/header::header"></div>
+
+<div class="container" style="padding-top: 55px;" >
+	
+	<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <!-- Optional: clear the XS cols if their content doesn't match in height -->
+  <div class="clearfix visible-xs-block"></div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+</div>
+
+	<div class="row">
+		<div class="col-md-4">
+		col-xs-4
+		</div>	
+		<div class="col-xs-12">
+		
+		<form  action="submit-product-edit.action" role="form" method="post" id="edit_form">
+		
+		<input type="hidden" name="id" />
+		
+			<div class="form-group">
+			 	<label for="exampleInputEmail1">分类</label>
+				<input type="text" name="category" id="category" maxlength="100" class="form-control"/>
+			</div>
+			
+			<div class="form-group">
+			 	<label for="exampleInputEmail1">标题</label>
+				<input type="text" name="title" id="title" maxlength="512" class="form-control"/>
+			</div>
+			
+			<div class="form-group">
+			 	<label for="exampleInputEmail1">描述</label>
+				<textarea name="remarks" id="remarks" maxlength="4000"  class="form-control" rows="3"></textarea>
+			</div>
+		
+			<div class="form-group">
+			 	<label for="exampleInputEmail1">价格</label>
+				<input type="number" name="title" id="title" maxlength="10" class="form-control"/>
+			</div>
+			
+			<div class="form-group">
+    			<label for="exampleInputFile">File input</label>
+    			<input type="file" id="exampleInputFile"/>
+    			<p class="help-block">Example block-level help text here.</p>
+  			</div>
+  
+			<div class="form-group">			
+				<input type="hidden" name="content" id="content"/>
+			</div>
+			
+		<div class="col-xs-12 text-center">
+			
+			<input type="submit" class="btn btn-default" value="发布" />
+	
+			<input type="submit" class="btn btn-default" value="预览" />
+	
+		</div>
+		</form>
+		</div>		
+	</div>
+	
+</div>	
+
+<div th:include="fragments/footer::footer">footer</div>
+ 
+<script src="../plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="../js/site.js"></script>
+
+<script type="text/javascript" src="../plugins/bootstrapvalidator/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrapvalidator/language/zh_CN.js"></script>
+	
+<script th:inline="javascript">
+/*<![CDATA[*/
+           
+function formValidator(){
+	
+	$('#blog_edit_form').bootstrapValidator({
+		message: '输入信息验证不通过',
+		fields: {
+			title: {
+				message: '标题信息输入不正确！',
+				validators: {
+					notEmpty: {
+						message: '标题不能为空！'
+					},
+					stringLength: {
+						min: 2,
+						max: 100,
+						message: '标题不能小于2个字，也不能大于100个字！'
+					}
+				}
+			},
+			content: {
+				validators: {
+					notEmpty: {
+						message: '内容不能为空！'
+					}
+				}
+			}
+		}
+	}).on('success.form.bv', function(e) {
+        e.preventDefault();
+       
+        var editor=$('#editor')[0].contentWindow.editor;
+        
+        $("#content").val(editor.getHTML());
+                
+   	  	$.ajax({
+          url: $(this).attr('action'),
+          type: 'POST',
+          data: $(this).serialize(),
+          success: function(result) {
+          	console.log(result);
+
+              if(result.success){
+              	
+            	  go2page(result.data);
+              	
+              }else{
+              	 message(result.msg);
+              }
+          }
+      });
+    });
+}
+
+	$(function(){
+		
+		formValidator();
+		
+		$("#btn_test").click(function(){
+			
+			var editor=$('#editor')[0].contentWindow.editor;
+			
+		 	console.log( editor.getHTML());
+			
+		});
+	});
+/*]]>*/
+</script>
+
+</body>
+</html>
