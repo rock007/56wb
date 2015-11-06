@@ -96,7 +96,13 @@
     		<artifactId>reactor-spring-messaging</artifactId>
     		<version>2.0.4.RELEASE</version>
 		</dependency>
-	
+
+	<dependency>
+  		<groupId>org.thymeleaf.extras</groupId>
+  		<artifactId>thymeleaf-extras-tiles2-spring4</artifactId>
+  		<version>2.1.1.RELEASE</version>
+	</dependency>
+
 	</dependencies>
 		
 	<build>

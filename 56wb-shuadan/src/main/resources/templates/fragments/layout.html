@@ -1,9 +1,31 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8"/>
-</head>
-<body>
-	   
-</body>
+<html>
+  <head>
+  	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Task List</title>
+    <link href="../plugins/winstrap/css/winstrap.css" rel="stylesheet" />
+	<link href="../css/site.css" rel="stylesheet" />    
+  </head>
+  <body>
+    <div th:replace="fragments/header::header">
+      ... header
+    </div>
+    
+    <div class="container" style="padding-top: 55px;" >
+      <div layout:fragment="content">
+        	这是母版内容页
+      </div>      
+    </div>
+    <div th:replace="fragments/footer::footer">&copy; 2014 The Static Templates</div>
+    
+    <script src="../plugins/jquery/jquery.min.js"></script>
+	<script src="../plugins/winstrap/js/vendor/bootstrap.min.js"></script>
+	<script src="../plugins/winstrap/js/app.js"></script>
+    
+	<script src="../js/site.js"></script>
+    
+    <th:block layout:fragment="script"></th:block>
+    
+  </body>
 </html>

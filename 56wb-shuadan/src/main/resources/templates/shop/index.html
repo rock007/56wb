@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>	
-	<title>新增、编辑</title>
-	<link href="../plugins/winstrap/css/winstrap.css" rel="stylesheet" />
-	<link href="../css/site.css" rel="stylesheet" />
-		
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" layout:decorator="fragments/layout" >
+<head>	
+	<title>首页</title>		
 </head>
 <body>
+<div layout:fragment="content">
+this is content
+gfgfgfgfgfgfg
 
-<div th:replace="fragments/header::header"></div>
+dsdsdsdsdsd
 
-<div class="container" style="padding-top: 55px;" >
-	
-	<div class="page-header">
+<div class="page-header">
         <div class="container">
             <div class="row">
                 <div class="col-xs-24">
@@ -36,8 +33,7 @@
             </div>
         </div>
     </div>
-    
-	<div class="row">
+  <div class="row">
   		<div class="col-xs-24">
   			<ol class="breadcrumb">
         		<li><a href="#">Parent page</a></li>
@@ -76,7 +72,6 @@
         
   		</div>  		
 	</div>
-	
 	<div class="row">
                 <div class="col-xs-24 col-md-12">
                     <div class="img-container">
@@ -92,6 +87,9 @@
                     </div>
                 </div>
     </div>
+	  
+    	
+	
 <element class="m-xxl"></element>
 	<div class="row">
 		<div class="col-md-8">
@@ -297,16 +295,9 @@
 	</div>
 	</div>
 	
-</div>	
+</div>
 
-<div th:include="fragments/footer::footer">footer</div>
-    
-<script src="../plugins/jquery/jquery.min.js"></script>
-<script src="../plugins/winstrap/js/vendor/bootstrap.min.js"></script>
-<script src="../plugins/winstrap/js/app.js"></script>
-    
-<script src="../js/site.js"></script>
-
+<th:block layout:fragment="script">
 <script type="text/javascript" src="../plugins/bootstrapvalidator/bootstrapValidator.min.js"></script>
 <script type="text/javascript" src="../plugins/bootstrapvalidator/language/zh_CN.js"></script>
 	
@@ -420,7 +411,11 @@ function formValidator(){
 		});
 	});
 /*]]>*/
-</script>
+</script>   
+            
+</th:block>
+
+
 
 
 <a href="#top" class="back-to-top">dfdfdfdfdf

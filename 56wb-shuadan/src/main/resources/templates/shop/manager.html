@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>	
-	<title>新增、编辑</title>
+	<title></title>
 	<link href="../plugins/winstrap/css/winstrap.css" rel="stylesheet" />
 	<link href="../css/site.css" rel="stylesheet" />
 		
@@ -12,32 +12,72 @@
 
 <div th:replace="fragments/header::header"></div>
 
-<div class="container" style="padding-top: 55px;" >
+<div class="container-flow" style="padding-top: 55px;" >
 	
-	<div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-24">
-                    <h1>This is a page header</h1>
-                    <p>With some content</p>
-    
-                    <ul class="nav nav-pills">
-                        <li role="presentation" class="active">
-                            <a href="#nav-item-1">Nav item 1</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#nav-item-2">Nav item 2</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#nav-item-3">Nav item 3</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+	
 	<div class="row">
+		<div class="col-md-4">
+	
+		<ul >
+				<li>
+					<a href="dashboard/index.html" class="ajax-link">
+						<i class="fa fa-dashboard"></i>
+						<span class="hidden-xs">首页</span>
+					</a>
+				</li>				  
+				<li >
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-list-alt"></i>
+						<span class="hidden-xs">生产企业</span>
+					</a>
+					<ul>
+						
+						<li><a class="ajax-link" href="dashboard/factory-info.html?f=${fac.id}">工厂简介</a></li>
+						<li><a class="ajax-link" href="dashboard/factory-machine.html?f=${fac.id}">生产工艺</a></li>
+						<li><a class="ajax-link" href="dashboard/factory-search.html?f=${fac.id}">生产数据</a></li>
+						<li><a class="ajax-link" href="dashboard/factory-cctv.html?f=${fac.id}">视频监控</a></li>
+							
+					</ul>
+				</li>
+				<li >
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-area-chart"></i>
+						<span class="hidden-xs">报表</span>
+					</a>
+					<ul >
+						<li><a class="ajax-link" href="dashboard/records-search.html">数据查询</a></li>
+						
+						<li><a class="ajax-link" href="dashboard/report-month.html">月报报表</a></li>
+						<li><a class="ajax-link" href="dashboard/report-year.html">年报报表</a></li>
+					</ul>
+				</li>
+				
+				<li>
+					<a href="dashboard/users.html" class="ajax-link">
+						<i class="fa fa-user"></i>
+						<span class="hidden-xs">用户管理</span>
+					</a>
+				</li>
+				
+				<li >
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-book"></i>
+						<span class="hidden-xs">基本信息</span>
+					</a>
+					<ul >
+						<li><a class="ajax-link" href="dashboard/factory-list.html">生产企业</a></li>
+						<li><a class="ajax-link" href="dashboard/machine-setting.html">生产设备配置</a></li>
+						<li><a class="ajax-link" href="dashboard/machine-list.html">设备列表</a></li>
+						<li><a class="ajax-link" href="dashboard/dicts.html?mtype=2">对比参数</a></li>
+					</ul>
+				</li>
+			</ul>
+			
+			
+		</div>	
+		<div class="col-md-20">
+		
+		<div class="row">
   		<div class="col-xs-24">
   			<ol class="breadcrumb">
         		<li><a href="#">Parent page</a></li>
@@ -76,92 +116,7 @@
         
   		</div>  		
 	</div>
-	
-	<div class="row">
-                <div class="col-xs-24 col-md-12">
-                    <div class="img-container">
-                        <img src="http://placekitten.com/600/338" />
-                    </div>
-                </div>
-                <div class="col-xs-24 col-md-12">
-                    <div class="jumbotron-content">
-                        <h1>hhhhhhh1</h1>
-                        <p>ppppp</p>
-                        <a href="">ffffff</a>
-                        <button class="btn btn-primary">确定</button>
-                    </div>
-                </div>
-    </div>
-<element class="m-xxl"></element>
-	<div class="row">
-		<div class="col-md-8">
-		<ul class="nav main-menu">
-				<li>
-					<a href="dashboard/index.html" class="ajax-link">
-						<i class="fa fa-dashboard"></i>
-						<span class="hidden-xs">首页</span>
-					</a>
-				</li>				  
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-list-alt"></i>
-						<span class="hidden-xs">生产企业</span>
-					</a>
-					<ul class="dropdown-menu">
-						
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle">
-									<i class="fa fa-list"></i>
-									<span class="hidden-xs">fac.name </span>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a class="ajax-link" href="dashboard/factory-info.html?f=${fac.id}">工厂简介</a></li>
-									<li><a class="ajax-link" href="dashboard/factory-machine.html?f=${fac.id}">生产工艺</a></li>
-									<li><a class="ajax-link" href="dashboard/factory-search.html?f=${fac.id}">生产数据</a></li>
-									<li><a class="ajax-link" href="dashboard/factory-cctv.html?f=${fac.id}">视频监控</a></li>
-								</ul>
-							</li>							
-							
-							
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-area-chart"></i>
-						<span class="hidden-xs">报表</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="dashboard/records-search.html">数据查询</a></li>
-						
-						<li><a class="ajax-link" href="dashboard/report-month.html">月报报表</a></li>
-						<li><a class="ajax-link" href="dashboard/report-year.html">年报报表</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a href="dashboard/users.html" class="ajax-link">
-						<i class="fa fa-user"></i>
-						<span class="hidden-xs">用户管理</span>
-					</a>
-				</li>
-				
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-book"></i>
-						<span class="hidden-xs">基本信息</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="dashboard/factory-list.html">生产企业</a></li>
-						<li><a class="ajax-link" href="dashboard/machine-setting.html">生产设备配置</a></li>
-						<li><a class="ajax-link" href="dashboard/machine-list.html">设备列表</a></li>
-						<li><a class="ajax-link" href="dashboard/dicts.html?mtype=2">对比参数</a></li>
-					</ul>
-				</li>
-			</ul>
-			
-			
-		</div>	
-		<div class="col-md-16">
+		
 		
 		<form  action="submit-product-edit.action" role="form" method="post" id="edit_form">
 		
@@ -212,6 +167,23 @@
 	
 	</div>
 	
+	<div class="row">
+                <div class="col-xs-24 col-md-12">
+                    <div class="img-container">
+                        <img src="http://placekitten.com/600/338" />
+                    </div>
+                </div>
+                <div class="col-xs-24 col-md-12">
+                    <div class="jumbotron-content">
+                        <h1>hhhhhhh1</h1>
+                        <p>ppppp</p>
+                        <a href="">ffffff</a>
+                        <button class="btn btn-primary">确定</button>
+                    </div>
+                </div>
+    </div>
+<element class="m-r-md"></element>
+
 	<div class="row">
 		<div class="col-xs-24">
 			<div class="table-responsive">
