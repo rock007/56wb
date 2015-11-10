@@ -41,6 +41,12 @@ public class HomeController {
 		return "login";
 	}
 	
+	@RequestMapping("/about-us.html")
+	public String about_us(){
+		
+		return "about-me";
+	}
+	
 	@RequestMapping("/notify.json")
 	public @ResponseBody JsonMsg doBusNotify(String msg){
 		

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Task List</title>
+    <link href="../plugins/winstrap/css/winstrap.css" rel="stylesheet" />
+	<link href="../css/site.css" rel="stylesheet" />    
+  </head>
+  <body>
+    <div th:replace="fragments/header::header">
+      ... header
+    </div>
+    
+    <div class="container-flow" style="padding-top: 55px;" >
+      
+      <div class="row">
+		<div class="col-md-4">
+	
+		<ul >
+				<li>
+					<a href="dashboard/index.html" class="ajax-link">
+						<i class="fa fa-dashboard"></i>
+						<span class="hidden-xs">首页</span>
+					</a>
+				</li>				  
+				<li >
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-list-alt"></i>
+						<span class="hidden-xs">生产企业</span>
+					</a>
+					<ul>
+						
+						<li><a class="ajax-link" href="dashboard/factory-info.html?f=${fac.id}">工厂简介</a></li>
+						<li><a class="ajax-link" href="dashboard/factory-machine.html?f=${fac.id}">生产工艺</a></li>
+						<li><a class="ajax-link" href="dashboard/factory-search.html?f=${fac.id}">生产数据</a></li>
+						<li><a class="ajax-link" href="dashboard/factory-cctv.html?f=${fac.id}">视频监控</a></li>
+							
+					</ul>
+				</li>
+				<li >
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-area-chart"></i>
+						<span class="hidden-xs">报表</span>
+					</a>
+					<ul >
+						<li><a class="ajax-link" href="dashboard/records-search.html">数据查询</a></li>
+						
+						<li><a class="ajax-link" href="dashboard/report-month.html">月报报表</a></li>
+						<li><a class="ajax-link" href="dashboard/report-year.html">年报报表</a></li>
+					</ul>
+				</li>
+				
+				<li>
+					<a href="dashboard/users.html" class="ajax-link">
+						<i class="fa fa-user"></i>
+						<span class="hidden-xs">用户管理</span>
+					</a>
+				</li>
+				
+				<li >
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-book"></i>
+						<span class="hidden-xs">基本信息</span>
+					</a>
+					<ul >
+						<li><a class="ajax-link" href="dashboard/factory-list.html">生产企业</a></li>
+						<li><a class="ajax-link" href="dashboard/machine-setting.html">生产设备配置</a></li>
+						<li><a class="ajax-link" href="dashboard/machine-list.html">设备列表</a></li>
+						<li><a class="ajax-link" href="dashboard/dicts.html?mtype=2">对比参数</a></li>
+					</ul>
+				</li>
+			</ul>
+			
+			
+		</div>	
+		<div class="col-md-20">
+
+      		<div layout:fragment="content">
+        		这是母版内容页
+      		</div>
+		
+		</div>
+	</div>
+       
+    </div>
+    <div th:replace="fragments/footer::footer">&copy; 2014 The Static Templates</div>
+    
+    <script src="../plugins/jquery/jquery.min.js"></script>
+	<script src="../plugins/winstrap/js/vendor/bootstrap.min.js"></script>
+	<script src="../plugins/winstrap/js/app.js"></script>
+    
+	<script src="../js/site.js"></script>
+    
+    <th:block layout:fragment="script"></th:block>
+    
+    <a href="#top" class="back-to-top">dfdfdfdfdf
+        	<i class="glyph glyph-up"></i>
+        	<span class="sr-only">Back to top</span>
+	</a>
+  </body>
+</html>

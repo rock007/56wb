@@ -26,12 +26,14 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     	http.headers().frameOptions().disable();
     	
 		http.authorizeRequests()
-                .antMatchers( "/public/**").permitAll()
-                .antMatchers( "/","/static/**").permitAll()
+                .antMatchers("/public/**").permitAll()
                 .antMatchers("/plugins/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/css/**").permitAll()
-                .antMatchers("/blog/**/articles**").permitAll()                
+                .antMatchers("/images/**").permitAll()
+                .antMatchers("/blog/**/articles**").permitAll()
+                .antMatchers("/**/index.html**").permitAll()
+                .antMatchers("/**.html").permitAll()
                 .antMatchers("/","**.json").permitAll()                
                 .anyRequest().fullyAuthenticated()
                 .and()

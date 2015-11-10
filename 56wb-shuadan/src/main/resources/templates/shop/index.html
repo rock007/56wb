@@ -6,93 +6,9 @@
 </head>
 <body>
 <div layout:fragment="content">
-this is content
-gfgfgfgfgfgfg
-
-dsdsdsdsdsd
-
-<div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-24">
-                    <h1>This is a page header</h1>
-                    <p>With some content</p>
-    
-                    <ul class="nav nav-pills">
-                        <li role="presentation" class="active">
-                            <a href="#nav-item-1">Nav item 1</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#nav-item-2">Nav item 2</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#nav-item-3">Nav item 3</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-  <div class="row">
-  		<div class="col-xs-24">
-  			<ol class="breadcrumb">
-        		<li><a href="#">Parent page</a></li>
-        		<li><a href="#">Child page</a></li>
-        		<li><a href="#">Section</a></li>
-        		<li class="active">Current</li>
-    		</ol>
-    		
-    		 <div class="alert-stack">
-    
-    <div class="alert alert-warning with-glyph alert-dismissible fade in" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">
-                <i class="glyph glyph-cancel"></i>
-            </span>
-        </button>
-        <span class="alert-glyph">
-            <i class="glyph-info"></i>
-        </span>
-        <div class="alert-title">Danger alert with glyph example</div>
-        <div class="row">
-            <div class="col-md-20">
-                <p>This is a danger inline alert with an glyph. Want to know more about what glyphs you can use?</p>
-            </div>
-            <div class="col-md-4">
-                <p>
-                    <a href="#" class="pull-right hidden-xs hidden-sm">Click here</a>
-                    <a href="#" class="visible-xs-inline visible-sm-inline hidden-md">Click here</a>
-                </p>
-            </div>
-        </div>
-    </div>
-    
-        <!-- We can stack other alert components here -->
-    </div>
-        
-  		</div>  		
-	</div>
+  
 	<div class="row">
-                <div class="col-xs-24 col-md-12">
-                    <div class="img-container">
-                        <img src="http://placekitten.com/600/338" />
-                    </div>
-                </div>
-                <div class="col-xs-24 col-md-12">
-                    <div class="jumbotron-content">
-                        <h1>hhhhhhh1</h1>
-                        <p>ppppp</p>
-                        <a href="">ffffff</a>
-                        <button class="btn btn-primary">确定</button>
-                    </div>
-                </div>
-    </div>
-	  
-    	
-	
-<element class="m-xxl"></element>
-	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-4">
 		<ul class="nav main-menu">
 				<li>
 					<a href="dashboard/index.html" class="ajax-link">
@@ -118,8 +34,7 @@ dsdsdsdsdsd
 									<li><a class="ajax-link" href="dashboard/factory-search.html?f=${fac.id}">生产数据</a></li>
 									<li><a class="ajax-link" href="dashboard/factory-cctv.html?f=${fac.id}">视频监控</a></li>
 								</ul>
-							</li>							
-							
+							</li>
 							
 					</ul>
 				</li>
@@ -159,50 +74,250 @@ dsdsdsdsdsd
 			
 			
 		</div>	
-		<div class="col-md-16">
+		<div class="col-md-20">
 		
-		<form  action="submit-product-edit.action" role="form" method="post" id="edit_form">
-		
-		<input type="hidden" name="id" />
-		
-			<div class="form-group">
-			 	<label for="exampleInputEmail1">分类</label>
-				<input type="text" name="category" id="category" maxlength="100" class="form-control"/>
-			</div>
-			
-			<div class="form-group">
-			 	<label for="exampleInputEmail1">标题</label>
-				<input type="text" name="title" id="title" maxlength="512" class="form-control"/>
-			</div>
-			
-			<div class="form-group">
-			 	<label for="exampleInputEmail1">描述</label>
-				<textarea name="remarks" id="remarks" maxlength="4000"  class="form-control" rows="3"></textarea>
-			</div>
-		
-			<div class="form-group">
-			 	<label for="exampleInputEmail1">价格</label>
-				<input type="number" name="title" id="title" maxlength="10" class="form-control"/>
-			</div>
-			
-			<div class="form-group">
-    			<label for="exampleInputFile">File input</label>
-    			<input type="file" id="exampleInputFile"/>
-    			<p class="help-block">Example block-level help text here.</p>
-  			</div>
-  
-			<div class="form-group">			
-				<input type="hidden" name="content" id="content"/>
-			</div>
-			
-		<div class="col-xs-12 text-center">
-			
-			<input type="submit" class="btn btn-default" value="发布" />
-	
-			<input type="submit" class="btn btn-default" value="预览" />
-	
+		<div class="row">
+			<div class="col-md-4">
+                <figure class="media">
+                    <div class="media-img ratio-movie">
+                        <a href="#" class="no-outline">
+                            <img src="/images/6.jpg" alt=""/>
+                        </a>
+                    </div>
+                    <figcaption class="media-caption">
+                        <h4 class="media-header">
+                            <a href="#">Header</a>
+                        </h4>
+                        <div class="media-subheader">
+                            <a href="#">Subheader</a>
+                        </div>
+                        <div class="rating rating-small">
+                            <div class="rating-stars">
+                                <ul class="rating-stars-background">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+    
+                                <ul class="rating-stars-value" style="width: 80%">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="media-price">
+                            <s>$1,499.99</s> $1,299.99
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+            
+            <div class="col-md-4">
+                <figure class="media">
+                    <div class="media-img ratio-movie">
+                        <a href="#" class="no-outline">
+                            <img src="/images/6.jpg" alt=""/>
+                        </a>
+                    </div>
+                    <figcaption class="media-caption">
+                        <h4 class="media-header">
+                            <a href="#">Header</a>
+                        </h4>
+                        <div class="media-subheader">
+                            <a href="#">Subheader</a>
+                        </div>
+                        <div class="rating rating-small">
+                            <div class="rating-stars">
+                                <ul class="rating-stars-background">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+    
+                                <ul class="rating-stars-value" style="width: 80%">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="media-price">
+                            <s>$1,499.99</s> $1,299.99
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+            
+            <div class="col-md-4">
+                <figure class="media">
+                    <div class="media-img ratio-movie">
+                        <a href="#" class="no-outline">
+                            <img src="/images/6.jpg" alt=""/>
+                        </a>
+                    </div>
+                    <figcaption class="media-caption">
+                        <h4 class="media-header">
+                            <a href="#">Header</a>
+                        </h4>
+                        <div class="media-subheader">
+                            <a href="#">Subheader</a>
+                        </div>
+                        <div class="rating rating-small">
+                            <div class="rating-stars">
+                                <ul class="rating-stars-background">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+    
+                                <ul class="rating-stars-value" style="width: 80%">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="media-price">
+                            <s>$1,499.99</s> $1,299.99
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+            
+            <div class="col-md-4">
+                <figure class="media">
+                    <div class="media-img ratio-movie">
+                        <a href="#" class="no-outline">
+                            <img src="/images/6.jpg" alt=""/>
+                        </a>
+                    </div>
+                    <figcaption class="media-caption">
+                        <h4 class="media-header">
+                            <a href="#">Header</a>
+                        </h4>
+                        <div class="media-subheader">
+                            <a href="#">Subheader</a>
+                        </div>
+                        <div class="rating rating-small">
+                            <div class="rating-stars">
+                                <ul class="rating-stars-background">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+    
+                                <ul class="rating-stars-value" style="width: 80%">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="media-price">
+                            <s>$1,499.99</s> $1,299.99
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+            
+            <div class="col-md-4">
+                <figure class="media">
+                    <div class="media-img ratio-movie">
+                        <a href="#" class="no-outline">
+                            <img src="/images/6.jpg" alt=""/>
+                        </a>
+                    </div>
+                    <figcaption class="media-caption">
+                        <h4 class="media-header">
+                            <a href="#">Header</a>
+                        </h4>
+                        <div class="media-subheader">
+                            <a href="#">Subheader</a>
+                        </div>
+                        <div class="rating rating-small">
+                            <div class="rating-stars">
+                                <ul class="rating-stars-background">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+    
+                                <ul class="rating-stars-value" style="width: 80%">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="media-price">
+                            <s>$1,499.99</s> $1,299.99
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+            
+            <div class="col-md-4">
+                <figure class="media">
+                    <div class="media-img ratio-movie">
+                        <a href="#" class="no-outline">
+                            <img src="/images/6.jpg" alt=""/>
+                        </a>
+                    </div>
+                    <figcaption class="media-caption">
+                        <h4 class="media-header">
+                            <a href="#">Header</a>
+                        </h4>
+                        <div class="media-subheader">
+                            <a href="#">Subheader</a>
+                        </div>
+                        <div class="rating rating-small">
+                            <div class="rating-stars">
+                                <ul class="rating-stars-background">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+    
+                                <ul class="rating-stars-value" style="width: 80%">
+                                    <li><i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li><li>
+                                    <i class="glyph glyph-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="media-price">
+                            <s>$1,499.99</s> $1,299.99
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+            
 		</div>
-		</form>
 		
 		<element class="m-r-md"></element>
 		

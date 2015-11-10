@@ -1,48 +1,172 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" layout:decorator="fragments/layout">
 <head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>	
-	<title>demo2</title>
-	<link href="/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
-	<link href="/css/site.css" rel="stylesheet" />	    
-	<!--[if lt IE 9]>
-    <script src="/plugins/html5shiv/html5shiv.min.js"></script>
-    <script src="/plugins/respond/respond.min.js"></script>
-    <![endif]-->
-    
-    <link rel="shortcut icon" href="images/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png"/>
+	<title>demo2</title>	
 </head>
 <body>
 
-<div th:replace="fragments/header::header"></div>
-
-<div class="container" style="padding-top: 55px;" >
-	
-	<div class="row">
+<div layout:fragment="content">
+    
+       <div class="row">
+                <div class="col-sm-24 col-md-12 col-md-push-12">
+                    <div class="img-container">
+                        <img src="/images/338.jpg" />
+                    </div>
+                </div>
+                <div class="col-sm-24 col-md-12 col-md-pull-12">
+                    <div class="jumbotron-content">
+                        <h3>我说说给</h3>
+                        <p>点点滴滴</p>
+                        <button class="btn">交谈</button>
+                    </div>
+                </div>
+        </div>        
+        
+        <hr/>
+        <element class="m-h-lg"></element>
+        
+        <div class="row">
+         <div class="col-md-12">
+                    <div class="img-container">
+                        <img src="/images/338.jpg" />
+                    </div>
+                </div>
+				<div class="col-md-12">
+                    <h4>Selawik</h4>                   
+                    <h2 style="font-family: 'Selawik Light'">Lorem Ipsum</h2>
+                    <div class="type-sh2" style="font-family: 'Selawik Semilight'">Dolor sit amet</div>
+                    <p style="font-family: 'Selawik'">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p style="font-family: 'Selawik'">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p style="font-family: 'Selawik'">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                </div>
+               
+			
+		</div>
+		 <hr/>
+		<element class="m-r-md"></element>
 		
-		<div class="col-xs-12">
-		dddd	
-		</div>		
-		
-	</div>
-	zzzzzzzzzzzzzzzzzz
-</div>	
+		<div class="row section-gallery">
+    
+            <div class="col-md-6">
+    
+                <figure class="media">
+                    <div class="media-img ratio-2-1">
+                        <a href="" class="no-outline">
+                            <img src="/images/nature.jpg" alt=""/>
+                        </a>
+                    </div>
+    
+                    <figcaption class="media-caption">
+                        <h4 class="media-header">
+                            <a href="">Header</a>
+                        </h4>
+                        <div class="media-subheader">
+                            <a href="">Subheader</a>
+                        </div>
+                    </figcaption>
+                </figure>
+    
+            </div>
+    
+            <div class="col-md-6">
+    
+                <figure class="media">
+                    <div class="media-img ratio-2-1">
+                        <a href="">
+                            <img src="/images/nature.jpg" alt=""/>
+                        </a>
+                    </div>
+    
+                    <figcaption class="media-caption">
+                        <h4 class="media-header">
+                            <a href="">Header</a>
+                        </h4>
+                        <div class="media-subheader">
+                            <a href="">Subheader</a>
+                        </div>
+                    </figcaption>
+                </figure>
+    
+            </div>
+    
+            <div class="col-md-6">
+    
+                <figure class="media">
+                    <div class="media-img ratio-2-1">
+                        <a href="">
+                            <img src="/images/nature.jpg" alt=""/>
+                        </a>
+                    </div>
+    
+                    <figcaption class="media-caption">
+                        <h4 class="media-header">
+                            <a href="">Header</a>
+                        </h4>
+                        <div class="media-subheader">
+                            <a href="">Subheader</a>
+                        </div>
+                    </figcaption>
+                </figure>
+    
+            </div>
+    
+            <div class="col-md-6">
+    
+                <figure class="media">
+                    <div class="media-img ratio-2-1">
+                        <a href="">
+                            <img src="images/nature.jpg" alt=""/>
+                        </a>
+                    </div>
+    
+                    <figcaption class="media-caption">
+                        <h4 class="media-header">
+                            <a href="">Header</a>
+                        </h4>
+                        <div class="media-subheader">
+                            <a href="">Subheader</a>
+                        </div>
+                    </figcaption>
+                </figure>
+    
+            </div>
+    
+        </div>
+        
+        <hr/>
+        <element class="m-r-md"></element>
+        
+        <div class="row">
+        
+        <div class="col-md-16">
+        
+        </div>
+        <div class="col-md-8">
+            <form>
+        <div class="form-group">
+            <label for="email">联系方式</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="输入您的邮件地址"/>
+        </div>
+    
+        <div class="form-group">
+            <label for="exampleInputPassword1">留言</label>
+            <textarea rows="3" cols="5" class="form-control"  id="msg" name="msg" placeholder="输入你的需求"></textarea>
+            <p class="help-block">我们会和您联系的，请注意查收.</p>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">提交</button>
+    </form>
+        
+        </div>
+    
+        </div>
+</div>
 
-<div th:include="fragments/footer::footer">footer</div>
- 
-<script src="/js/jquery.js"></script>
-<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-	
-	<script th:inline="javascript">
+<script th:inline="javascript">
 /*<![CDATA[*/
-	$(function(){
-		
-	});
+    (function () {
+        $("#foo").prop("indeterminate", true);
+    })();
 /*]]>*/
 </script>
 

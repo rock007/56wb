@@ -1,47 +1,81 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" layout:decorator="fragments/layout">
 <head>
 	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>	
-	<title>demo2</title>
-	<link href="/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
-	<link href="/css/site.css" rel="stylesheet" />	    
+	<title>稻草人的田野</title>	    
 </head>
 <body>
 
-<div th:replace="fragments/header::header"></div>
+<div layout:fragment="content">
 
-<div class="container" style="padding-top: 55px;" >
-	
-	<div class="row">
-		<div class="col-xs-6 col-md-4">
-			this is left
+<div class="row">
+	<div class="col-md-16">
+ 
+      <div th:each="row,rowStat : ${list}">
+      
+      <div class="item">
+		<div class="content">
+		 <span th:text="${row.title}">Lorem Ipsum</span>
+		  teikaei 发布于<em>2015-11-10 13:41:59</em> 
+		  <p th:text="${row.content}">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+		  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+		  laboris nisi ut aliquip ex ea commodo consequat.</p>
+		 
 		</div>
-		<div class="col-xs-12 col-md-8">
-		
-  <table>
-    <tbody>
-      <tr th:each="row,rowStat : ${list}">
-        <td th:text="${rowNum}">1</td>
-        <td th:text="${row.title}">标题</td>
-        <td th:text="${row.content}">内容</td>
-      </tr>
-    </tbody>
-  </table>
-			
+		<div class="keyword-image">
+			<div class="media-img">            
+            	<img src="/images/338.jpg" style="width:128px;height :auto;" alt="" />
+        	</div>
+		</div>
+		<div class="clear"></div>
+		<div class="tools">
+				<ul  class="list-inline">
+							<li><b><a href="/articles/446809.htm">详细内容</a></b></li>
+							<li>已有<em>0</em>个意见&nbsp;&nbsp;|
+							</li>
+							<li><em>0</em>次推荐&nbsp;&nbsp;|</li>
+							<li><em>0</em>次打分&nbsp;&nbsp;|</li>							
+				</ul>
 		</div>
 		
 	</div>
-	
-</div>	
+	    
+        
+      </div>
+    
+        <nav>
+        <ul class="pager">
+            <li class="pager-prev">
+                <a href="#" aria-label="Previous">
+                    <i aria-hidden="true" class="glyph glyph-chevron-left-2"></i>
+                </a>
+            </li>
+            <li class="pager-next">
+                <a href="#" aria-label="Next">
+                    <i aria-hidden="true" class="glyph glyph-chevron-right-2"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+	</div>
+	<div class="col-md-8">
+<ul class="list-unstyled">
+<li> <a href="#">spring-boot</a></li>
+<li> <a href="#">spring</a></li>
+<li> <a href="#">docker</a></li>
+<li> <a href="#">react/native rect</a></li>
+</ul>
+	</div>
+</div>
 
-<div th:include="fragments/footer::footer">footer</div>
- 
-<script src="/js/jquery.js"></script>
-<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-	
-	<script th:inline="javascript">
+
+  
+</div>
+
+<th:block layout:fragment="script">
+<script th:inline="javascript">
 /*<![CDATA[*/
 	$(function(){
 		
@@ -55,6 +89,7 @@
 	});
 /*]]>*/
 </script>
+</th:block>
 
 </body>
 </html>
