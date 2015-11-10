@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="fragments/backend_layout">
+<head>
+	<meta charset="UTF-8"/>
+	<title>订单管理</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+<div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-24">    
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="active">
+                            <a href="#nav-item-1">添加新产品</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#nav-item-2">Nav item 2</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#nav-item-3">Nav item 3</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+		<div class="col-xs-24">
+		 
+			<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th class="text-right">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gadget Alpha</td>
+                <td>This is the amazing new Gadget Alpha.</td>
+                <td class="text-right">$0.99</td>
+            </tr>
+            <tr>
+                <td>Gadget Bravo</td>
+                <td>Also available is the Gadget Bravo which provides B.</td>
+                <td class="text-right">$2.99</td>
+            </tr>
+            <tr>
+                <td>Gadget Charlie</td>
+                <td>This is the lorem ipsumist Gadget Charlie.</td>
+                <td class="text-right">$1.99</td>
+            </tr>
+            <tr>
+                <td>Gadget Delta</td>
+                <td>Also available is the Gadget Bravo which provides B.</td>
+                <td class="text-right">$2.99</td>
+            </tr>
+            <tr>
+                <td>Gadget Echo</td>
+                <td>Gadget Delta is a solor dit lipsum for consumers.</td>
+                <td class="text-right">$2.99</td>
+            </tr>
+            <tr>
+                <td>Gadget Foxtrot</td>
+                <td>Gadget Echo provides solor dit for professionals.</td>
+                <td class="text-right">$1.99</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+			
+			<nav>
+        <ul class="pagination">        
+            <li class="pagination-prev">
+                <a href="#" aria-label="Previous">
+                    <i aria-hidden="true" class="glyph glyph-chevron-left-2"></i>
+                </a>
+            </li>
+    
+            <li><a href="#">1</a></li>
+    
+            <li class="pagination-ellipsis"><span>&hellip;</span></li>
+    
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+    
+            <li class="active"><a href="#">7</a></li>
+    
+            <li><a href="#">8</a></li>
+            <li><a href="#">9</a></li>
+    
+            <li class="pagination-ellipsis"><span>&hellip;</span></li>
+    
+            <li><a href="#">15</a></li>
+    
+            <li class="pagination-next">
+                <a href="#" aria-label="Next">
+                    <i aria-hidden="true" class="glyph glyph-chevron-right-2"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+			
+		</div>
+	</div>
+
+</div>
+
+<th:block layout:fragment="script">
+
+<script type="text/javascript" src="../plugins/bootstrapvalidator/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="../plugins/bootstrapvalidator/language/zh_CN.js"></script>
+	
+<script th:inline="javascript">
+/*<![CDATA[*/
+ 
+	$(function(){
+		
+	});
+/*]]>*/
+</script>
+
+</th:block>
+
+</body>
+</html>

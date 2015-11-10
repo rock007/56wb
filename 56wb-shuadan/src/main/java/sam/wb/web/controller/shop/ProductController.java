@@ -49,6 +49,12 @@ public class ProductController {
 		return new JsonMsg(false,ex.getMessage()) ;
 	}
 	
+	@RequestMapping("/products-list.html")
+	public String product_list(){
+		
+		return "shop/products-list";
+	}
+	
 	@RequestMapping(value="/post-product.html",method = RequestMethod.GET)
 	public  String edit(Map<String, Object> model) {
 		

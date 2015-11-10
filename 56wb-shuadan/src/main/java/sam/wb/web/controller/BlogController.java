@@ -66,6 +66,14 @@ public class BlogController {
 		return "blog/edit";
 	}
 	
+	@RequestMapping(value="/list.html")
+	public  String list(Map<String, Object> model) {
+		
+		model.put("time", new Date());
+		model.put("message", "hello the world");
+		return "blog/list";
+	}
+	
 	@RequestMapping(value="/submit-blog-edit.action",method = RequestMethod.POST)
 	public @ResponseBody JsonMsg submit_edit(@ModelAttribute Article m) {
 		
