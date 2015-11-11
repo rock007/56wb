@@ -19,7 +19,7 @@
 	
 		<ul >
 				<li>
-					<a href="backend/manager.html">
+					<a href="/backend/">
 						<i class="fa fa-dashboard"></i>
 						<span class="hidden-xs">后台</span>
 					</a>
@@ -66,15 +66,18 @@
 <div class="row">
   		<div class="col-xs-24">
   			<ol class="breadcrumb">
-        		<li><a href="#">Parent page</a></li>
-        		<li><a href="#">Child page</a></li>
-        		<li><a href="#">Section</a></li>
-        		<li class="active">Current</li>
+        		<li  th:each="nav,indexStat : ${navs}" th:class="${ #strings.isEmpty(nav.value)?'active':''}">
+        			
+        			<a th:if="${not #strings.isEmpty(nav.value) }" href="#" th:href="${nav.value}" th:text="${nav.key}">Parent page</a>
+        			
+        			<span th:if="${ #strings.isEmpty(nav.value) }" th:text="${nav.key}">未知</span>
+        			
+        		</li>
     		</ol>
     		
     		 <div class="alert-stack">
     
-    <div class="alert alert-warning with-glyph alert-dismissible fade in" role="alert">
+    <div class="alert alert-warning with-glyph alert-dismissible fade in hide" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">
                 <i class="glyph glyph-cancel"></i>

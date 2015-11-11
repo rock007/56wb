@@ -13,14 +13,14 @@
 	<div class="col-md-16">
  
       <div th:each="row,rowStat : ${list}">
-      
+   
       <div class="item">
 		<div class="content">
-		 <span th:text="${row.title}">Lorem Ipsum</span>
+		 <span class="title" th:text="${row.title}">Lorem Ipsum</span>
 		  teikaei 发布于<em>2015-11-10 13:41:59</em> 
-		  <p th:text="${row.content}">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+		  <div class="tag" th:utext="${row.content}">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
 		  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-		  laboris nisi ut aliquip ex ea commodo consequat.</p>
+		  laboris nisi ut aliquip ex ea commodo consequat.</div>
 		 
 		</div>
 		<div class="keyword-image">

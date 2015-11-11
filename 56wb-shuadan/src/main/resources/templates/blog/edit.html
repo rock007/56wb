@@ -9,37 +9,43 @@
 <div layout:fragment="content">
 
 	<div class="row">
+
+		<div class="col-md-20">
+		
 		<form  action="submit-blog-edit.action" role="form" method="post" id="blog_edit_form">
-		<div class="col-md-24">
-			 <div class="form-group">
-				<input type="text" name="title" id="title" maxlength="100" class="form-control"/>
-			</div>		
-			<iframe id="editor" style="width:100%; height:450px;"  onload="top.editor=this.contentWindow.editor"  src="../plugins/squire/document.html"></iframe>
 			
-			<div class="form-group">			
-				<input type="hidden" name="content" id="content"/>
+			<input type="hidden" name="id" />
+						
+			 <div class="form-group">
+				<input type="text" name="title" id="title" maxlength="250" placeholder="文章标题" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<textarea rows="10" cols="6" name="content" class="form-control"></textarea>
+			</div>
+			<div class="form-group">
+				<input type="text" name="keywords" id="title" placeholder="关键字" maxlength="100" class="form-control"/>
+			</div>
+			<div class="form-group">
+			
+				<input type="submit" class="btn btn-default" value="发布" />
+	
+				<input type="submit" class="btn btn-default" value="保存" />		
 			</div>
 			
+		</form>
 			
-		</div>		
-		<div class="col-xs-24 text-center">
+		</div>	
+		<div  class="col-md-4">
 		
-			<input type="hidden" name="id" />
-		
-			<input type="hidden" name="createUser" value="sam"/>
-			
-			<input type="submit" class="btn btn-default" value="发布" />
-	
-			<input type="submit" class="btn btn-default" value="保存" />
-	
-		</div>
-		</form>	
+		</div>			
 	</div>
 	
 
 </div>
 
 <th:block layout:fragment="script">
+<script type="text/javascript" src="../plugins/tinymce/tinymce.min.js"></script>
+
 <script type="text/javascript" src="../plugins/bootstrapvalidator/bootstrapValidator.min.js"></script>
 <script type="text/javascript" src="../plugins/bootstrapvalidator/language/zh_CN.js"></script>
 	
@@ -75,9 +81,9 @@ function formValidator(){
 	}).on('success.form.bv', function(e) {
         e.preventDefault();
        
-        var editor=$('#editor')[0].contentWindow.editor;
+       // var editor=$('#editor')[0].contentWindow.editor;
         
-        $("#content").val(editor.getHTML());
+      //  $("#content").val(editor.getHTML());
                 
    	  	$.ajax({
           url: $(this).attr('action'),
@@ -88,7 +94,7 @@ function formValidator(){
 
               if(result.success){
               	
-            	  go2page(result.data);
+            	  go2page("/blog/list.html");
               	
               }else{
               	 message(result.msg);
@@ -102,13 +108,15 @@ function formValidator(){
 		
 		formValidator();
 		
-		$("#btn_test").click(function(){
-			
-			var editor=$('#editor')[0].contentWindow.editor;
-			
-		 	console.log( editor.getHTML());
-			
+		tinymce.init({
+				selector:'textarea',
+				theme: "modern",
+				language: "zh_CN",
+				 inline: false,
+				 menubar:false,
+				 statusbar: false
 		});
+
 	});
 /*]]>*/
 </script>

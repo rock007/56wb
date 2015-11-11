@@ -29,7 +29,7 @@ import sam.wb.db.repository.BlogArticleRepository;
 
 @Controller
 @RequestMapping(value="/blog")
-public class BlogController {
+public class BlogController extends SuperController{
 
 	private static final Logger logger = LoggerFactory.getLogger(BlogController.class);
 	 
@@ -60,6 +60,12 @@ public class BlogController {
 	
 	@RequestMapping(value="/edit.html",method = RequestMethod.GET)
 	public  String edit(Map<String, Object> model) {
+		
+		navs.put("博客", "/list.html");		
+		navs.put("编辑", "");		
+		model.put("navs", navs);
+
+		model.put("navs", navs);
 		
 		model.put("time", new Date());
 		model.put("message", "hello the world");
