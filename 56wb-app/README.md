@@ -18,3 +18,7 @@ grunt run
 ```
 
 Open `index.html` in your browser with http://localhost:8000.
+
+
+bak:
+"react-winjs": "",

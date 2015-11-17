@@ -6,6 +6,7 @@
     "jsx":"react"
   },
   "files": [
-    "src/typings/react/react.d.ts"
+    "src/typings/react/react.d.ts",
+    "src/typings/react/react-dom.d.ts"
   ]
 }

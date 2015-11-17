@@ -9,11 +9,12 @@
   "author": "sam_lucky@163.com",
   "license": "ISC",
   "dependencies": {
-    "react": "^0.13.3",
+    "react": "0.14.2",
+    "react-dom": "0.14.2",
     "flux":"",
     "winjs": "^4.3",
-    "react-winjs": "",
-    "immutable":""
+    "immutable":"",    
+    "react-router":""
   },
   "devDependencies": {
     "grunt": "~0.4.5",

@@ -85,7 +85,7 @@ module.exports = function(grunt) {
         },
         concurrent: {
             target4: {
-                tasks: ['webpack:ts','webpack:abc','connect'],
+                tasks: ['webpack:ts','connect'],
                 options: {
                   logConcurrentOutput: true
                 }

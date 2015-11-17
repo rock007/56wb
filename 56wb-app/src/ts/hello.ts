@@ -1,7 +1,7 @@
 
-//module hello {
+/// <reference path="../typings/tsd.d.ts" />
 
-	export class demo {
+export class demo {
 
 	private x: number;
 	 msg: string = "this is test";
@@ -15,7 +15,4 @@
 		alert(m);
 	}
 
-
-	}
-
-//}
+}
