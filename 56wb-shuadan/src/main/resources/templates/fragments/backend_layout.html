@@ -29,7 +29,7 @@
 						<i class="fa fa-list-alt"></i>
 						<span class="hidden-xs">博客</span>
 					</a>
-					<ul>
+					<ul >
 						<li><a class="ajax-link" href="/blog/edit.html">新建</a></li>
 						<li><a class="ajax-link" href="/blog/list.html">列表</a></li>
 						<li><a class="ajax-link" href="#">评论</a></li>
@@ -62,8 +62,8 @@
 			
 			
 		</div>	
-		<div class="col-md-20">
-<div class="row">
+	<div class="col-md-20">
+	<div class="row">
   		<div class="col-xs-24">
   			<ol class="breadcrumb">
         		<li  th:each="nav,indexStat : ${navs}" th:class="${ #strings.isEmpty(nav.value)?'active':''}">

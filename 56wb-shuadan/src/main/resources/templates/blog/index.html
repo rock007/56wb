@@ -15,28 +15,19 @@
       <div th:each="row,rowStat : ${list}">
    
       <div class="item">
-		<div class="content">
-		 <span class="title" th:text="${row.title}">Lorem Ipsum</span>
-		  teikaei 发布于<em>2015-11-10 13:41:59</em> 
-		  <div class="tag" th:utext="${row.content}">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-		  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-		  laboris nisi ut aliquip ex ea commodo consequat.</div>
-		 
+		<div class="title">
+		 <span>
+		 	<a th:text="${row.title}"  th:href="'/blog/'+${row.title+'-'+row.id+'.html'}"></a>
+		 </span>		  	 
 		</div>
-		<div class="keyword-image">
-			<div class="media-img">            
-            	<img src="/images/338.jpg" style="width:128px;height :auto;" alt="" />
-        	</div>
-		</div>
-		<div class="clear"></div>
+		<div class="content" th:utext="${row.content}"></div>	
+	
 		<div class="tools">
-				<ul  class="list-inline">
-							<li><b><a href="/articles/446809.htm">详细内容</a></b></li>
-							<li>已有<em>0</em>个意见&nbsp;&nbsp;|
-							</li>
-							<li><em>0</em>次推荐&nbsp;&nbsp;|</li>
-							<li><em>0</em>次打分&nbsp;&nbsp;|</li>							
-				</ul>
+			<ul  class="list-inline">
+					<li th:text="${row.keywords}"></li>
+					<li th:text="查看次数+${row.view_num}"></li>
+					<li th:text="${row.create_date}"></li>
+			</ul>
 		</div>
 		
 	</div>
@@ -47,12 +38,12 @@
         <nav>
         <ul class="pager">
             <li class="pager-prev">
-                <a href="#" aria-label="Previous">
+                <a href="#" aria-label="上一页">
                     <i aria-hidden="true" class="glyph glyph-chevron-left-2"></i>
                 </a>
             </li>
             <li class="pager-next">
-                <a href="#" aria-label="Next">
+                <a href="#" aria-label="下一页">
                     <i aria-hidden="true" class="glyph glyph-chevron-right-2"></i>
                 </a>
             </li>

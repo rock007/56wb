@@ -57,6 +57,15 @@ public class BlogController extends SuperController{
 		
 		return "blog/index";
 	}
+	@RequestMapping("/{title}-{id}.html")
+	public String artice_detail(Map<String, Object> model,@PathVariable String title,@PathVariable Long id){
+		
+		Article oneArticle= blogArticleRepository.findOne(id);
+		
+		model.put("oneArticle", oneArticle);
+		
+		return "blog/detail";
+	}
 	
 	@RequestMapping(value="/edit.html",method = RequestMethod.GET)
 	public  String edit(Map<String, Object> model) {

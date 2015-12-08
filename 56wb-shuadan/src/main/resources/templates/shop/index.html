@@ -2,76 +2,59 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" layout:decorator="fragments/layout" >
 <head>	
-	<title>首页</title>		
+	<title>56我帮.商城</title>		
 </head>
 <body>
 <div layout:fragment="content">
   
 	<div class="row">
 		<div class="col-md-4">
-		<ul class="nav main-menu">
-				<li>
-					<a href="dashboard/index.html" class="ajax-link">
-						<i class="fa fa-dashboard"></i>
-						<span class="hidden-xs">首页</span>
-					</a>
-				</li>				  
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-list-alt"></i>
-						<span class="hidden-xs">生产企业</span>
-					</a>
-					<ul class="dropdown-menu">
-						
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle">
-									<i class="fa fa-list"></i>
-									<span class="hidden-xs">fac.name </span>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a class="ajax-link" href="dashboard/factory-info.html?f=${fac.id}">工厂简介</a></li>
-									<li><a class="ajax-link" href="dashboard/factory-machine.html?f=${fac.id}">生产工艺</a></li>
-									<li><a class="ajax-link" href="dashboard/factory-search.html?f=${fac.id}">生产数据</a></li>
-									<li><a class="ajax-link" href="dashboard/factory-cctv.html?f=${fac.id}">视频监控</a></li>
-								</ul>
-							</li>
-							
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-area-chart"></i>
-						<span class="hidden-xs">报表</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="dashboard/records-search.html">数据查询</a></li>
-						
-						<li><a class="ajax-link" href="dashboard/report-month.html">月报报表</a></li>
-						<li><a class="ajax-link" href="dashboard/report-year.html">年报报表</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a href="dashboard/users.html" class="ajax-link">
-						<i class="fa fa-user"></i>
-						<span class="hidden-xs">用户管理</span>
-					</a>
-				</li>
-				
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-book"></i>
-						<span class="hidden-xs">基本信息</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="dashboard/factory-list.html">生产企业</a></li>
-						<li><a class="ajax-link" href="dashboard/machine-setting.html">生产设备配置</a></li>
-						<li><a class="ajax-link" href="dashboard/machine-list.html">设备列表</a></li>
-						<li><a class="ajax-link" href="dashboard/dicts.html?mtype=2">对比参数</a></li>
-					</ul>
-				</li>
-			</ul>
-			
+		<a class="btn btn-lightweight no-outline navigation-btn">Father John Misty</a>
+		
+	<ul role="navigation" id="sidenav-small" class="nav side-navigation side-navigation-small theme-default">
+       
+        <li class="active side-nav-c2">
+            <a data-toggle="collapse" data-parent="#sidenav-small" href="#father-john-misty" aria-expanded="true" aria-controls="#father-john-misty">Father John Misty</a>
+            <ul class="nav collapse in" id="father-john-misty">
+                <li><a href="#sidenav-small">Fear Fun</a></li>
+                <li><a href="#sidenav-small" class="active">I Love You Honeybear</a></li>
+            </ul>
+        </li>
+        <li class="side-nav-c2">
+            <a data-toggle="collapse" data-parent="#sidenav-small" href="#the-national" aria-expanded="false" aria-controls="#the-national">The National</a>
+            <ul class="nav collapse" id="the-national">
+                <li><a href="#sidenav-small">The National</a></li>
+                <li><a href="#sidenav-small">Songs for Dirty Lovers</a></li>
+                <li><a href="#sidenav-small">Alligator</a></li>
+                <li><a href="#sidenav-small">Boxer</a></li>
+                <li><a href="#sidenav-small">High Violet</a></li>
+                <li><a href="#sidenav-small">Trouble Will Find Me</a></li>
+            </ul>
+        </li>
+        <li class="side-nav-c2">
+            <a data-toggle="collapse" data-parent="#sidenav-small" href="#the-strokes" aria-expanded="false" aria-controls="#the-strokes">The Strokes</a>
+            <ul class="nav collapse" id="the-strokes">
+                <li><a href="#sidenav-small">Is this it?</a></li>
+                <li><a href="#sidenav-small">Room on Fire</a></li>
+                <li><a href="#sidenav-small">First Impressions of Earth</a></li>
+                <li><a href="#sidenav-small">Angels</a></li>
+                <li><a href="#sidenav-small">Comedown Machine</a></li>
+            </ul>
+        </li>
+        <li class="side-nav-c2">
+            <a data-toggle="collapse" data-parent="#sidenav-small" href="#glass-animals" aria-expanded="false" aria-controls="#glass-animals">Glass Animals</a>
+            <ul class="nav collapse" id="glass-animals">
+                <li><a href="#sidenav-small">Zaba</a></li>
+            </ul>
+        </li>
+        <li class="side-nav-c2">
+            <a data-toggle="collapse" data-parent="#sidenav-small" href="#imagine-dragons" aria-expanded="false" aria-controls="#imagine-dragons">Imagine Dragons</a>
+            <ul class="nav collapse" id="imagine-dragons">
+                <li><a href="#sidenav-small">Night Vision</a></li>
+                <li><a href="#sidenav-small">Smoke + Mirrors</a></li>
+            </ul>
+        </li>
+    </ul>
 			
 		</div>	
 		<div class="col-md-20">

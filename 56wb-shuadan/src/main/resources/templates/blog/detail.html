@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" 
+      layout:decorator="fragments/layout">
+<head>
+	<meta charset="UTF-8"/>
+	<title>博客详细</title>	    
+</head>
+<body>
+<div layout:fragment="content">
+
+<div class="row">
+			
+	<div class="col-md-18">
+ 		<ol class="breadcrumb">
+        	<li><a href="/">首页</a></li>
+        	<li><a href="/blog/hello/articles">博客</a></li>
+        	<li><a href="/blog/hello/articles/java">java</a></li>
+        	<li class="active" th:text="${oneArticle.title}"></li>
+    	</ol>
+    
+      	<div th:utext="${oneArticle.content}">
+        	空页面内容
+      	</div>
+    
+	</div>
+	<div class="col-md-6">
+<ul class="list-unstyled">
+<li> <a href="#">spring-boot</a></li>
+<li> <a href="#">spring</a></li>
+<li> <a href="#">docker</a></li>
+<li> <a href="#">react/native rect</a></li>
+</ul>
+	</div>
+</div>
+
+
+  
+</div>
+
+<th:block layout:fragment="script">
+<script th:inline="javascript">
+/*<![CDATA[*/
+	$(function(){
+		
+	});
+/*]]>*/
+</script>
+</th:block>
+
+</body>
+</html>

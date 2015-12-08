@@ -11,3 +11,8 @@ footer{
 .login-form{
 	padding-top: 120px;	
 }
+
+.form-control select,input{
+	
+	max-width:100%!important;
+}

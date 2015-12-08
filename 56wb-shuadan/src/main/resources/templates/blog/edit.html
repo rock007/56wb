@@ -10,20 +10,33 @@
 
 	<div class="row">
 
-		<div class="col-md-20">
+		<div class="col-md-22">
 		
 		<form  action="submit-blog-edit.action" role="form" method="post" id="blog_edit_form">
 			
 			<input type="hidden" name="id" />
+			
+			<div class="form-group">
+				<label for="subject">分类</label>
+                <select class="form-control"  name="subject" id="subject">
+                   	<option>随便说说</option>
+                   	<option>java</option>
+                   	<option>erlang</option>
+                   	<option>前端(js/react/grunt)</option>
+                   	<option>dotnet</option>                   	
+                </select>            	            
+			</div>
 						
 			 <div class="form-group">
+			 	<label for="subject">标题</label>
 				<input type="text" name="title" id="title" maxlength="250" placeholder="文章标题" class="form-control"/>
 			</div>
 			<div class="form-group">
 				<textarea rows="10" cols="6" name="content" class="form-control"></textarea>
 			</div>
 			<div class="form-group">
-				<input type="text" name="keywords" id="title" placeholder="关键字" maxlength="100" class="form-control"/>
+				<label for="subject">关键字</label>			
+				<input type="text" name="keywords" id="keywords" placeholder="关键字" maxlength="100" class="form-control"/>
 			</div>
 			<div class="form-group">
 			
@@ -34,10 +47,7 @@
 			
 		</form>
 			
-		</div>	
-		<div  class="col-md-4">
-		
-		</div>			
+		</div>
 	</div>
 	
 
@@ -76,6 +86,13 @@ function formValidator(){
 						message: '内容不能为空！'
 					}
 				}
+			},
+			keywords: {
+				validators: {
+					notEmpty: {
+						message: '关键字不能为空！'
+					}
+				}
 			}
 		}
 	}).on('success.form.bv', function(e) {
@@ -112,9 +129,9 @@ function formValidator(){
 				selector:'textarea',
 				theme: "modern",
 				language: "zh_CN",
-				 inline: false,
-				 menubar:false,
-				 statusbar: false
+				inline: false,
+				menubar:false,
+				statusbar: false
 		});
 
 	});
