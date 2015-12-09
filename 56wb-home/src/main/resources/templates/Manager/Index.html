@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "个人中心";
+}
+
+<div class="row">
+
+    <div class="col-lg-2">
+
+        <ul class="nav nav-pills nav-stacked" id="leftMenu">
+            <li>@Html.ActionLink("我的项目", "Projects", "Manager")</li>
+            <ul>
+                <li><span>公司网站</span></li>
+                <li>@Html.ActionLink("项目需求", "Requirement", "Manager")</li>
+                <li>@Html.ActionLink("系统分析", "Analysis", "Manager")</li>
+                <li>@Html.ActionLink("项目日志", "Logs", "Manager")</li>
+            </ul>
+            <li>@Html.ActionLink("项目资料", "Docs", "Manager")</li>
+            
+            <li>@Html.ActionLink("消息中心", "Message", "Manager")</li>
+            
+            <li>@Html.ActionLink("设置", "Setting","Manager")</li>
+
+            @{
+                if (User.IsInRole("Admin"))
+                {
+
+                    <li>admin</li>
+                    <ul>
+                        <li>@Html.ActionLink("用户管理", "Users", "Admin") </li>
+                    </ul>
+
+                }
+            }
+
+        </ul>
+
+    </div>
+
+    <div class="col-lg-10">
+
+       <h2>加紧建设中，欢迎稍后访问，或给我们<a href="mailto:scarecrow_online@163.com">留言</a>  </h2>
+
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+    $(function () {
+
+
+    })
+    </script>
+}

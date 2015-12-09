@@ -9,6 +9,7 @@
   	<module>56wb-db</module>
   	<module>56wb-shuadan</module>
   	<module>56wb-pay</module>
+  	<module>56wb-home</module>
   </modules>
   
   <properties>

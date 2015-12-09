@@ -82,10 +82,27 @@ public class BlogController extends SuperController{
 	}
 	
 	@RequestMapping(value="/list.html")
-	public  String list(Map<String, Object> model) {
+	public  String list(Map<String, Object> model,
+			@RequestParam(value="page",required=false,defaultValue="0")  int page,
+			@RequestParam(value="limit",required=false,defaultValue="20")  int limit) {
 		
-		model.put("time", new Date());
-		model.put("message", "hello the world");
+		if(App.getCurUser()==null){
+			
+			//登录
+			//return "forward:/hello" => 转发到能够匹配 /hello 的 controller 上  
+			return "redirect:/login.html";
+		}
+		
+		String userName=App.getCurUser().getUsername();
+		
+		Page<Article> articlePage= blogArticleRepository.findByCreateUserOrderByIdDesc(userName,new PageRequest(page, limit));
+		
+		model.put("list", articlePage.getContent());
+		model.put("rowNum", articlePage.getTotalElements());
+		model.put("pageNum", articlePage.getTotalPages());
+		model.put("page", page);
+		model.put("limit", limit);
+		
 		return "blog/list";
 	}
 	

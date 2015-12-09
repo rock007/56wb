@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" layout:decorator="fragments/layout">
+<head>
+	<title>app开发</title>	
+</head>
+<body>
+<div layout:fragment="content">
+<div class="row">
+
+    <div class="col-xs-4 col-md-2">
+
+        <ul class="nav nav-pills nav-stacked" id="leftMenu">
+            <li class="active"><a href="#webapp">WebApp</a></li>
+            <li><a href="#android">Android</a></li>
+            <li><a href="#ios">IOS</a></li>            
+        </ul>
+    </div>
+
+    <div class="col-xs-14 col-md-10">
+
+        <ul class="media-list">
+            <li class="media">
+                <a class="pull-left" name="webapp">
+                    <img class="media-objec" src="images/webapp.jpe" alt="webapp" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">网站App</h4>
+                    <p>
+                        更低的开发及维护成本, 运行在浏览器，采用html5开发，一次编写全平台运行,
+                    
+                        使页面变得更小，减少了用户不必要的支出；而且，性能更好使耗电量更低；
+                    
+                        方便升级，打开即可使用最新版本，免去重新下载升级包的麻烦，使用过程中就直接更新了离线缓存。
+                        <img src="images/webapp_demo.jpg" class="img-responsive" alt="webapp运行图示" />
+                    </p>
+                   
+                </div>
+            </li>
+            <li class="media">
+                <a class="pull-right" name="android">
+                    <img class="media-objec" src="images/android_app.jpe" alt="安卓应用" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Android手机应用</h4>
+                    <p>
+                        智能手机70%左右为android的系统或在android基础上改装的系统，android应用能够让您的产品能够运行在大部分的智能手机平台上。
+                        <img src="images/android_demo.png" class="img-responsive" alt="android应用演示" />
+                    </p>
+                </div>
+            </li>
+            <li class="media">
+                <a class="pull-left" name="ios">
+                    <img class="media-objec" src="images/ios_app.jpe" alt="苹果app" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">iphone手机应用</h4>
+                    <p>
+                        当今最好手机的平台，拥有苹果平台上的应用能够加深公司高端形象。
+                        <img src="images/iphone_demo.png" class="img-responsive" alt="Ios应用演示" />
+                    </p>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</div>
+</div>
+
+
+<th:block layout:fragment="script">
+<script th:inline="javascript">
+/*<![CDATA[*/
+    $(function () {
+
+        $("#leftMenu >li").click(function () {
+
+            $("#leftMenu >li").removeAttr("class");
+            $(this).attr("class", "active");
+        });
+        
+    })
+/*]]>*/
+</script>   
+            
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">56我帮</title>
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="author" content="稻草人工作室" />
+    <meta name="copyright" content="www.56wb.com@版权所有" />
+    <meta name="description" content="为企业提供网站建设，设计运营公司官网，提供企业管理系统开发、手机应用开发以及系统维护服务" />
+  
+    <!--[if lt IE 9]>
+    <script src="/plugins/html5shiv/html5shiv.min.js"></script>
+    <script src="/plugins/respond/respond.min.js"></script>
+    <![endif]-->
+    <link href="/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+	<link href="/css/Site.css" rel="stylesheet" /> 
+  </head>
+  <body>
+    <!-- 
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+             <ul class="nav navbar-nav navbar-right">
+        		<li><a href="/Account/Register" id="registerLink">注册</a></li>
+        		<li><a href="/Account/Login" id="loginLink">登录</a></li>
+    		</ul>
+        </div>
+    </div>
+     -->
+    
+    <div class="container">
+
+        <div class="navbar ">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-left">
+                    <img src="/images/logo/wb_logo.png" class="img-responsive" alt="稻草人科技" />
+                </a>
+            </div>
+                
+            <div style="padding-top:30px;">
+                <ul class="nav  nav-pills">                
+                    <li th:class="${menu=='home'?'active':''}" ><a href="/">首页</a></li>
+                    <li th:class="${menu=='web-make'?'active':''}" ><a href="/web-make">网站建设</a></li>                    
+                    <li th:class="${menu=='app-dev'?'active':''}" ><a href="/app-dev">App开发</a></li>
+                    <li th:class="${menu=='about-us'?'active':''}" ><a href="/about-us.html">关于我们</a></li>
+                </ul>
+                
+            </div>
+
+        </div>
+
+    </div>
+    
+    <a name="top"></a>
+    
+      <div class="container body-content" layout:fragment="content">
+        	这是母版内容页
+      </div>
+      
+    <div class="footer">
+        <p>
+            </p><ol class="list-inline">
+                <li><a href="http://gz.56wb.com">我帮.找工作</a> </li>
+                <li><a href="http://56wb.com">我帮.网站建设</a> </li>
+            </ol>
+        <p></p>
+        <p>© 2015 - 稻草人科技</p>
+        <p>
+            <a href="#top">Back to top</a>
+        </p>
+    </div>
+    
+    <script src="/plugins/jquery/jquery.min.js"></script>
+	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+    
+	<script src="/js/site.js"></script>    
+    <th:block layout:fragment="script"></th:block>
+    
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F90a89d5e4b57593192d8d4eafa258d88' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>
