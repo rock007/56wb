@@ -81,11 +81,38 @@ module.exports = function(grunt) {
             watch: true,
             keepalive: true,
             inline: true
+          },
+          app:{
+            entry: './src/app/index.tsx',
+            output: {
+              filename: 'dest/app_bundle.js'
+            },
+            resolve: {
+              // Add `.ts` and `.tsx` as a resolvable extension.
+              extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+            },
+            module: {
+              loaders: [
+                // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+                { test: /\.tsx?$/, loader: 'ts-loader' }
+              ]
+            },
+            watch: true,
+            keepalive: true,
+            inline: true
           }
         },
         concurrent: {
             target4: {
                 tasks: ['webpack:ts','connect'],
+                options: {
+                  logConcurrentOutput: true
+                }
+            }
+          },
+        concurrent: {
+            target1: {
+                tasks: ['webpack:app','connect'],
                 options: {
                   logConcurrentOutput: true
                 }
@@ -110,6 +137,6 @@ module.exports = function(grunt) {
       grunt.registerTask('compress', ['webpack:ts','uglify']);
 
       // Default task(s).
-      grunt.registerTask('default', ['clean','concurrent:target4']);
+      grunt.registerTask('default', ['clean','concurrent:target1']);
 
   };

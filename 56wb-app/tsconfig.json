@@ -5,8 +5,16 @@
     "module":"commonjs",
     "jsx":"react"
   },
-  "files": [
-    "src/typings/react/react.d.ts",
-    "src/typings/react/react-dom.d.ts"
-  ]
+   "filesGlob": [
+        "./src/**/**/*.tsx",
+        "./src/**/**/*.ts",        
+        "./src/typings/tsd.d.ts",
+        "!./node_modules/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "atom": {
+        "rewriteTsconfig": false
+    }
 }
