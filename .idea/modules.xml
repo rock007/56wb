@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gan-api/gan-api.iml" filepath="$PROJECT_DIR$/gan-api/gan-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gan-backend/gan-backend.iml" filepath="$PROJECT_DIR$/gan-backend/gan-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gan-city.iml" filepath="$PROJECT_DIR$/gan-city.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gan-core/gan-core.iml" filepath="$PROJECT_DIR$/gan-core/gan-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gan-db/gan-db.iml" filepath="$PROJECT_DIR$/gan-db/gan-db.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gan-home/gan-home.iml" filepath="$PROJECT_DIR$/gan-home/gan-home.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gan-pay/gan-pay.iml" filepath="$PROJECT_DIR$/gan-pay/gan-pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gan-system/gan-system.iml" filepath="$PROJECT_DIR$/gan-system/gan-system.iml" />
+    </modules>
+  </component>
+</project>

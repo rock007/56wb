@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gan-api" />
+        <module name="gan-backend" />
+        <module name="gan-core" />
+        <module name="gan-db" />
+        <module name="gan-home" />
+        <module name="gan-pay" />
+        <module name="gan-system" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gan-api" target="1.8" />
+      <module name="gan-backend" target="1.8" />
+      <module name="gan-city" target="1.8" />
+      <module name="gan-core" target="1.8" />
+      <module name="gan-db" target="1.8" />
+      <module name="gan-home" target="1.8" />
+      <module name="gan-pay" target="1.8" />
+      <module name="gan-system" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

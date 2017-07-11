@@ -1,0 +1,130 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.fp</groupId>
+	<artifactId>gan-city</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>gan-home</artifactId>
+  <packaging>jar</packaging>
+  <name>home</name>
+  <properties>
+	
+	<start-class>com.fp.gan.home.HomeApplication</start-class>
+	
+  </properties>
+  
+  <dependencies>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	  <dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-security</artifactId>
+	  </dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	  <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<!-- in idea
+			<scope>provided</scope>
+			-->
+		</dependency>
+		
+	  	<dependency>
+			<groupId>com.fp</groupId>
+			<artifactId>gan-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fp</groupId>
+			<artifactId>gan-db</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fp</groupId>
+			<artifactId>gan-pay</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency> 
+        <dependency>
+      		<groupId>io.projectreactor.spring</groupId>
+      		<artifactId>reactor-spring-core</artifactId>
+      		
+    	</dependency>
+    	<dependency>
+    		<groupId>io.projectreactor.spring</groupId>
+    		<artifactId>reactor-spring-context</artifactId>
+    		
+		</dependency>
+		<dependency>
+    		<groupId>io.projectreactor.spring</groupId>
+    		<artifactId>reactor-spring-webmvc</artifactId>
+    		
+		</dependency>
+
+		<dependency>
+    		<groupId>io.projectreactor.spring</groupId>
+    		<artifactId>reactor-spring-messaging</artifactId>
+    		
+		</dependency>
+
+	<dependency>
+  		<groupId>org.thymeleaf.extras</groupId>
+  		<artifactId>thymeleaf-extras-tiles2-spring4</artifactId>
+  		<version>2.1.1.RELEASE</version>
+	</dependency>
+
+	</dependencies>
+		
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+            		<execution>
+                		<goals>
+                    		<goal>repackage</goal>
+                		</goals>
+            		</execution>
+        		</executions>
+			</plugin>
+			<plugin>
+    			<artifactId>maven-war-plugin</artifactId>
+    			<configuration>
+        			<failOnMissingWebXml>false</failOnMissingWebXml>
+    			</configuration>
+			</plugin>
+
+		</plugins>
+	</build>	
+	
+</project>

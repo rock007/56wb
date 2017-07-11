@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+	  <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">后台管理</title>
+
+    <!-- Bootstrap -->
+    <link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/plugins/jquery-file-upload/css/jquery.fileupload.css"/>
+
+    <!-- Font Awesome -->
+    <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <!-- NProgress -->
+    <link href="/vendors/nprogress/nprogress.css" rel="stylesheet"/>
+    <!-- iCheck -->
+    <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet"/>
+    <!-- bootstrap-wysiwyg -->
+    <link href="/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet"/>
+    <!-- Select2 -->
+    <link href="/vendors/select2/dist/css/select2.min.css" rel="stylesheet"/>
+    <!-- Switchery -->
+    <link href="/vendors/switchery/dist/switchery.min.css" rel="stylesheet"/>
+    <!-- starrr -->
+    <link href="/vendors/starrr/dist/starrr.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet"/>
+
+    <!-- Custom Theme Style -->
+    <link href="/css/custom.css" rel="stylesheet"/>
+    	<link href="/css/site.css" rel="stylesheet" />    
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><span>24H慧生活</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu"   >
+              <div class="menu_section">
+                <h3>管理中心</h3>
+                <ul class="nav side-menu" >
+                  
+                  <li th:classappend="${#httpServletRequest.requestURI == '/backend/article/article-list.html'} ? 'active' : ''"  th:if="${#authorization.expression('hasRole(''admin'')')}">
+					<a href="/backend/article/article-list.html" >
+						<i class="fa fa-dashboard"></i>地铁新闻
+						
+					</a>
+				 </li>
+				 <li  th:classappend="${#httpServletRequest.requestURI == '/backend/ad/ad-list.html'} ? 'active' : ''" th:if="${#authorization.expression('hasRole(''admin'')')}">
+					<a href="/backend/ad/ad-list.html">
+						<i class="fa fa-dashboard"></i>广告位管理
+						
+					</a>
+				</li>
+                
+                <li  th:if="${#authorization.expression('hasRole(''wy'')')}" >
+					<a  class="dropdown-toggle">
+						<i class="fa fa-list-alt"></i>物业管理
+						<span class="fa fa-chevron-down"></span>
+					</a>
+					<ul  class="nav child_menu">
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/wyhouse/wyhouse-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/wyhouse/wyhouse-list.html">户籍管理</a>
+						</li>
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/suggest/suggest-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/suggest/suggest-list.html">投诉建议</a>
+						</li>	
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/wynotice/wynotice-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/wynotice/wynotice-list.html">物业公告</a>
+						</li>
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/wyquestion/wyquestion-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/wyquestion/wyquestion-list.html">物业咨询</a>
+						</li>
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/wyrepair/wyrepair-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/wyrepair/wyrepair-list.html">物业报修</a>
+						</li>
+						
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/wyhouse/bill-wy-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/wyhouse/bill-wy-list.html">物业费查询</a>
+						</li>	
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/wyhouse/bill-water-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/wyhouse/bill-water-list.html">水费查询</a>
+						</li>
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/wyhouse/bill-packing-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/wyhouse/bill-packing-list.html">停车费查询</a>
+						</li>
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/wyhouse/bill-gas-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/wyhouse/bill-gas-list.html">燃气费查询</a>
+						</li>
+					</ul>
+				</li>
+				<li th:if="${#authorization.expression('hasRole(''admin'')')}">
+					<a href="#" class="dropdown-toggle" >
+						<i class="fa fa-area-chart"></i>商圈管理
+						<span class="fa fa-chevron-down"></span>
+					</a>
+					<ul  class="nav child_menu">					
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/subway/shop-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/subway/shop-list.html">商户管理</a>
+						</li>
+					</ul>
+				</li>
+				<li th:if="${#authorization.expression('hasRole(''admin'')')}">
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-book"></i>智慧家居
+						<span class="fa fa-chevron-down"></span>
+					</a>
+					<ul  class="nav child_menu">
+						<li th:classappend="${#httpServletRequest.requestURI == '/backend/device/device-list.html'} ? 'current-page' : ''" >
+							<a href="/backend/device/device-list.html" class="ajax-link">设备</a>
+						</li>
+						<li th:classappend="${#httpServletRequest.requestURI == '/backend/scene/scene-list.html'} ? 'current-page' : ''" >
+							<a href="/backend/scene/scene-list.html" class="ajax-link">情景</a>
+						</li>
+							<li th:classappend="${#httpServletRequest.requestURI == '/backend/sceneCmd/sceneCmd-list.html'} ? 'current-page' : ''" >
+							<a href="/backend/sceneCmd/sceneCmd-list.html" class="ajax-link">情景命令组</a>
+						</li>
+					</ul>
+				</li>					
+				<li th:if="${#authorization.expression('hasRole(''admin'')')}">
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-windows"></i>基础数据
+						<span class="fa fa-chevron-down"></span>
+					</a>
+					<ul  class="nav child_menu">
+						<li	 th:classappend="${#httpServletRequest.requestURI == '/backend/house/wycompany-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/house/wycompany-list.html">物业公司</a>
+						</li>
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/house/cell-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/house/cell-list.html">小区管理</a>
+						</li>
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/subway/postion-list.html'} ? 'current-page' : 'hide'" >
+							<a  href="/backend/subway/postion-list.html">地铁站点</a>
+						</li>
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/subway/point-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/subway/point-list.html">地铁出口</a>
+						</li>	
+						<li th:classappend="${#httpServletRequest.requestURI == '/backend/sysdict/sysdict-list.html'} ? 'current-page' : ''" >
+							<a href="/backend/sysdict/sysdict-list.html" class="ajax-link">字典管理</a>
+						</li>
+
+					</ul>
+				</li>
+				<li th:if="${#authorization.expression('hasRole(''admin'')')}">
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-clone"></i>账号管理
+						<span class="fa fa-chevron-down"></span>
+					</a>
+					<ul  class="nav child_menu">
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/message/message-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/message/message-list.html">消息管理</a>
+						</li>	
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/account/user-list.html'} ? 'current-page' : ''" >
+							<a href="/backend/account/user-list.html">用户管理</a>
+						</li>
+						
+						<li  th:classappend="${#httpServletRequest.requestURI == '/backend/waylet/waylet-list.html'} ? 'current-page' : ''" >
+							<a  href="/backend/waylet/waylet-list.html">用户钱包</a>
+						</li>
+					</ul>
+				</li>  
+                 
+                </ul>
+
+              </div>
+              
+            </div>
+
+
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small  hide" >
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+  <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="ajax-link" href="/">首页</a></li>
+          	<li><a class="ajax-link" href="/api/">接口中心</a></li>
+          </ul>
+    
+          <ul class="nav navbar-nav navbar-right" th:if="${#httpServletRequest.remoteUser != null}" >
+            <li><a href="#">
+            	<span th:text="${session.CON_SESSION_USER_ROLE}" th:unless="${session == null}">管理员</span>
+            	:
+            	<span th:text="${session.CON_SESSION_USER_NAME}" th:unless="${session == null}">张三</span>
+            </a></li>
+            
+            <li><a href="#">修改密码</a></li>
+            <li><a th:href="@{/logout.html}">注销</a></li>
+            <li><a href="#">帮助</a></li>
+          </ul>
+        </div>
+             
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+           
+            <div class="clearfix"></div>
+            
+<div class="row">
+  		<div class="col-xs-12">
+  			<ol class="breadcrumb">
+        		<li  th:each="nav,indexStat : ${navs}" th:class="${ #strings.isEmpty(nav.value)?'active':''}">
+        			
+        			<a th:if="${not #strings.isEmpty(nav.value) }" href="#" th:href="${nav.value}" th:text="${nav.key}">Parent page</a>
+        			
+        			<span th:if="${ #strings.isEmpty(nav.value) }" th:text="${nav.key}">未知</span>
+        			
+        		</li>
+    		</ol>
+    		 <div class="alert-stack">
+    
+    <div class="alert alert-warning with-glyph alert-dismissible fade in hide" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+                <i class="glyph glyph-cancel"></i>
+            </span>
+        </button>
+        <span class="alert-glyph">
+            <i class="glyph-info"></i>
+        </span>
+        <div class="alert-title">Danger alert with glyph example</div>
+        <div class="row">
+            <div class="col-md-8">
+                <p>This is a danger inline alert with an glyph. Want to know more about what glyphs you can use?</p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <a href="#" class="visible-xs-inline visible-sm-inline hidden-md">Click here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+        <!-- We can stack other alert components here -->
+    </div>
+  		</div>  		
+	</div>
+
+     	<div layout:fragment="content">
+              这是母版内容页
+        </div>
+            
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+        
+          <div class="pull-right">
+          	<span class="copyright"> &copy; 2015 版权所有<a 
+							href="/backend/">fengpu</a>'s 科技.
+				</span>	
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="/vendors/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="/vendors/moment/min/moment.min.js"></script>
+    <script src="/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="/vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="/vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="/vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="/vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="/vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="/vendors/starrr/dist/starrr.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="/js/custom.js"></script>
+    <script src="/js/site.js"></script>
+	<th:block layout:fragment="script"></th:block>
+  </body>
+</html>
