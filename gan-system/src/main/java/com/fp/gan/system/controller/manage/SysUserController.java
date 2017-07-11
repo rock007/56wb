@@ -55,14 +55,14 @@ public class SysUserController extends BaseController {
     @Autowired
     private SysUserPermissionService sysUserPermissionService;
 
-    @RequiresPermissions("Sys:user:read")
+    @RequiresPermissions("sys:user:read")
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
         return "/manage/user/index";
     }
 
 
-    @RequiresPermissions("Sys:user:organization")
+    @RequiresPermissions("sys:user:organization")
     @RequestMapping(value = "/organization/{id}", method = RequestMethod.GET)
     public String organization(@PathVariable("id") int id, ModelMap modelMap) {
         // 所有组织
@@ -78,7 +78,7 @@ public class SysUserController extends BaseController {
     }
 
 
-    @RequiresPermissions("Sys:user:organization")
+    @RequiresPermissions("sys:user:organization")
     @RequestMapping(value = "/organization/{id}", method = RequestMethod.POST)
     @ResponseBody
     public Object organization(@PathVariable("id") int id, HttpServletRequest request) {
@@ -88,7 +88,7 @@ public class SysUserController extends BaseController {
     }
 
 
-    @RequiresPermissions("Sys:user:role")
+    @RequiresPermissions("sys:user:role")
     @RequestMapping(value = "/role/{id}", method = RequestMethod.GET)
     public String role(@PathVariable("id") int id, ModelMap modelMap) {
         // 所有角色
@@ -98,13 +98,13 @@ public class SysUserController extends BaseController {
         sysUserRoleExample.createCriteria()
                 .andUserIdEqualTo(id);
         List<SysUserRole> SysUserRoles = sysUserRoleService.selectByExample(sysUserRoleExample);
-        modelMap.put("SysRoles", SysRoles);
-        modelMap.put("SysUserRoles", SysUserRoles);
+        modelMap.put("sysRoles", SysRoles);
+        modelMap.put("sysUserRoles", SysUserRoles);
         return "/manage/user/role";
     }
 
 
-    @RequiresPermissions("Sys:user:role")
+    @RequiresPermissions("sys:user:role")
     @RequestMapping(value = "/role/{id}", method = RequestMethod.POST)
     @ResponseBody
     public Object role(@PathVariable("id") int id, HttpServletRequest request) {
@@ -114,7 +114,7 @@ public class SysUserController extends BaseController {
     }
 
 
-    @RequiresPermissions("Sys:user:permission")
+    @RequiresPermissions("sys:user:permission")
     @RequestMapping(value = "/permission/{id}", method = RequestMethod.GET)
     public String permission(@PathVariable("id") int id, ModelMap modelMap) {
         SysUser user = sysUserService.selectByPrimaryKey(id);
@@ -123,7 +123,7 @@ public class SysUserController extends BaseController {
     }
 
 
-    @RequiresPermissions("Sys:user:permission")
+    @RequiresPermissions("sys:user:permission")
     @RequestMapping(value = "/permission/{id}", method = RequestMethod.POST)
     @ResponseBody
     public Object permission(@PathVariable("id") int id, HttpServletRequest request) {
@@ -133,7 +133,7 @@ public class SysUserController extends BaseController {
     }
 
 
-    @RequiresPermissions("Sys:user:read")
+    @RequiresPermissions("sys:user:read")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public Object list(
@@ -152,6 +152,7 @@ public class SysUserController extends BaseController {
             sysUserExample.or()
                     .andUsernameLike("%" + search + "%");
         }
+
         List<SysUser> rows = sysUserService.selectByExampleForOffsetPage(sysUserExample, offset, limit);
         long total = sysUserService.countByExample(sysUserExample);
         Map<String, Object> result = new HashMap<>();
@@ -161,14 +162,14 @@ public class SysUserController extends BaseController {
     }
 
 
-    @RequiresPermissions("Sys:user:create")
+    @RequiresPermissions("sys:user:create")
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create() {
         return "/manage/user/create";
     }
 
 
-    @RequiresPermissions("Sys:user:create")
+    @RequiresPermissions("sys:user:create")
     @ResponseBody
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public Object create(SysUser sysUser) {
@@ -196,7 +197,7 @@ public class SysUserController extends BaseController {
     }
 
 
-    @RequiresPermissions("Sys:user:delete")
+    @RequiresPermissions("sys:user:delete")
     @RequestMapping(value = "/delete/{ids}",method = RequestMethod.GET)
     @ResponseBody
     public Object delete(@PathVariable("ids") String ids) {
@@ -205,7 +206,7 @@ public class SysUserController extends BaseController {
     }
 
 
-    @RequiresPermissions("Sys:user:update")
+    @RequiresPermissions("sys:user:update")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String update(@PathVariable("id") int id, ModelMap modelMap) {
         SysUser user = sysUserService.selectByPrimaryKey(id);
@@ -214,7 +215,7 @@ public class SysUserController extends BaseController {
     }
 
 
-    @RequiresPermissions("Sys:user:update")
+    @RequiresPermissions("sys:user:update")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public Object update(@PathVariable("id") int id, SysUser sysUser) {

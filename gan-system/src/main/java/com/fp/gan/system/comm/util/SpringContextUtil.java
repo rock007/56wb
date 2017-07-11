@@ -3,6 +3,7 @@ package com.fp.gan.system.comm.util;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import java.util.Map;
  * 资源文件读取工具
  *
  */
+@Component
 public class SpringContextUtil implements ApplicationContextAware {
 
 	private static ApplicationContext context = null;

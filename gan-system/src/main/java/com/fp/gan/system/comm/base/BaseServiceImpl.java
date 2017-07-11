@@ -20,6 +20,7 @@ public abstract class BaseServiceImpl<Mapper, Record, Example> implements BaseSe
 
 	public Mapper mapper;
 
+
 	@Override
 	public int countByExample(Example example) {
 		try {

@@ -24,6 +24,9 @@ public class SysApiServiceImpl implements SysApiService {
     private static Logger _log = LoggerFactory.getLogger(SysApiServiceImpl.class);
 
     @Autowired
+    SysApiMapper sysApiMapper;
+
+    @Autowired
     SysUserMapper sysUserMapper;
 
     @Autowired
@@ -54,7 +57,7 @@ public class SysApiServiceImpl implements SysApiService {
             _log.info("selectSysPermissionBySysUserId : SysUserId={}", SysUserId);
             return null;
         }
-        List<SysPermission> SysPermissions =null; //SysApiMapper.selectSysPermissionBySysUserId(SysUserId);
+        List<SysPermission> SysPermissions =sysApiMapper.selectPermissionByUserId(SysUserId);
         return SysPermissions;
     }
 
@@ -64,7 +67,7 @@ public class SysApiServiceImpl implements SysApiService {
      * @return
      */
     @Override
-    @Cacheable(value = "zheng-Sys-rpc-service-ehcache", key = "'selectSysPermissionBySysUserId_' + #SysUserId")
+    @Cacheable(value = "Sys-service-ehcache", key = "'selectSysPermissionBySysUserId_' + #SysUserId")
     public List<SysPermission> selectSysPermissionBySysUserIdByCache(Integer SysUserId) {
         return selectSysPermissionBySysUserId(SysUserId);
     }
@@ -82,7 +85,7 @@ public class SysApiServiceImpl implements SysApiService {
             _log.info("selectSysRoleBySysUserId : SysUserId={}", SysUserId);
             return null;
         }
-        List<SysRole> SysRoles =null; //sysApiMapper.selectSysRoleBySysUserId(SysUserId);
+        List<SysRole> SysRoles =sysApiMapper.selectRoleByUserId(SysUserId);
         return SysRoles;
     }
 
@@ -92,7 +95,7 @@ public class SysApiServiceImpl implements SysApiService {
      * @return
      */
     @Override
-    @Cacheable(value = "zheng-Sys-rpc-service-ehcache", key = "'selectSysRoleBySysUserId_' + #SysUserId")
+    @Cacheable(value = "Sys-service-ehcache", key = "'selectSysRoleBySysUserId_' + #SysUserId")
     public List<SysRole> selectSysRoleBySysUserIdByCache(Integer SysUserId) {
         return selectSysRoleBySysUserId(SysUserId);
     }

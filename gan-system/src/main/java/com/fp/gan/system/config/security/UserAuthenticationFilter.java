@@ -39,7 +39,7 @@ public class UserAuthenticationFilter extends
 		 StringUtils.endsWithAny(curUrl, ".js",".css",".html",".map")
 		|| StringUtils.endsWithAny(curUrl, ".jpg",".png",".gif", ".jpeg",".ico")
 		|| StringUtils.equals(curUrl, "/unauthor")
-				|| curUrl.indexOf("/sso/")>0) {
+				|| curUrl.indexOf("/sso/")!=-1) {
 			return true;
 		}
 

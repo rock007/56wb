@@ -84,7 +84,7 @@
   <sql id="Blob_Column_List">
     parameter, result
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.zheng.Sys.dao.model.SysLogExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.fp.gan.system.dao.sys.model.SysLogExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -100,7 +100,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.zheng.Sys.dao.model.SysLogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.fp.gan.system.dao.sys.model.SysLogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -126,13 +126,13 @@
     delete from Sys_log
     where log_id = #{logId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.zheng.Sys.dao.model.SysLogExample">
+  <delete id="deleteByExample" parameterType="com.fp.gan.system.dao.sys.model.SysLogExample">
     delete from Sys_log
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.zheng.Sys.dao.model.SysLog">
+  <insert id="insert" parameterType="com.fp.gan.system.dao.sys.model.SysLog">
     insert into Sys_log (log_id, description, username,
       start_time, spend_time, base_path, 
       uri, url, method, user_agent, 
@@ -144,7 +144,7 @@
       #{ip,jdbcType=VARCHAR}, #{permissions,jdbcType=VARCHAR}, #{parameter,jdbcType=LONGVARCHAR}, 
       #{result,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.zheng.Sys.dao.model.SysLog">
+  <insert id="insertSelective" parameterType="com.fp.gan.system.dao.sys.model.SysLog">
     insert into Sys_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="logId != null">
@@ -235,7 +235,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.zheng.Sys.dao.model.SysLogExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.fp.gan.system.dao.sys.model.SysLogExample" resultType="java.lang.Long">
     select count(*) from Sys_log
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -329,7 +329,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zheng.Sys.dao.model.SysLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.fp.gan.system.dao.sys.model.SysLog">
     update Sys_log
     <set>
       <if test="description != null">
@@ -374,7 +374,7 @@
     </set>
     where log_id = #{logId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zheng.Sys.dao.model.SysLog">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fp.gan.system.dao.sys.model.SysLog">
     update Sys_log
     set description = #{description,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
@@ -391,7 +391,7 @@
       result = #{result,jdbcType=LONGVARCHAR}
     where log_id = #{logId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zheng.Sys.dao.model.SysLog">
+  <update id="updateByPrimaryKey" parameterType="com.fp.gan.system.dao.sys.model.SysLog">
     update Sys_log
     set description = #{description,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
