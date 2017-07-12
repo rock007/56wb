@@ -3,7 +3,6 @@ package com.fp.gan.system.config;
 import com.fp.gan.system.comm.annotation.BaseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
@@ -33,21 +32,6 @@ public class ApplicationRefreshEventListener implements ApplicationListener<Cont
                     e.printStackTrace();
                 }
             }
-
-            /****
-            // 系统入口初始化
-            Map<String, BaseInterface> baseInterfaceBeans = contextRefreshedEvent.getApplicationContext().getBeansOfType(BaseInterface.class);
-            for(Object service : baseInterfaceBeans.values()) {
-                _log.debug(">>>>> {}.init()", service.getClass().getName());
-                try {
-                    Method init = service.getClass().getMethod("init");
-                    init.invoke(service);
-                } catch (Exception e) {
-                    _log.error("初始化BaseInterface的init方法异常", e);
-                    e.printStackTrace();
-                }
-            }
-            ***/
 
         }
     }

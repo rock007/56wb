@@ -2,6 +2,9 @@ package com.fp.gan.system.controller;
 
 import com.fp.gan.system.comm.constant.Result;
 import com.fp.gan.system.comm.constant.ResultConstant;
+import com.fp.gan.system.comm.shiro.session.SystemSession;
+import com.fp.gan.system.comm.shiro.session.SystemSessionDao;
+import com.fp.gan.system.comm.util.RedisUtil;
 import com.fp.gan.system.dao.sys.model.SysSystemExample;
 import com.fp.gan.system.dao.sys.service.SysSystemService;
 import com.fp.gan.system.dao.sys.service.SysUserService;
@@ -38,17 +41,20 @@ public class SSOController extends BaseController {
 
     private final static Logger _log = LoggerFactory.getLogger(SSOController.class);
     // 全局会话key
-    private final static String Sys_SERVER_SESSION_ID = "Sys-server-session-id";
+    private final static String SERVER_SESSION_ID = "server-session-id";
     // 全局会话key列表
-    private final static String Sys_SERVER_SESSION_IDS = "Sys-server-session-ids";
+    private final static String SERVER_SESSION_IDS = "server-session-ids";
     // code key
-    private final static String Sys_SERVER_CODE = "Sys-server-code";
+    private final static String SERVER_CODE = "server-code";
 
     @Autowired
     SysSystemService sysSystemService;
 
     @Autowired
     SysUserService sysUserService;
+
+    @Autowired
+    SystemSessionDao systemSessionDao;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(HttpServletRequest request) throws Exception {
@@ -131,20 +137,20 @@ public class SSOController extends BaseController {
                 return new Result(ResultConstant.INVALID_ACCOUNT, "帐号已锁定！");
             }
             // 更新session状态
-           //!! SysSessionDao.updateStatus(sessionId, SysSession.OnlineStatus.on_line);
+            systemSessionDao.updateStatus(sessionId, SystemSession.OnlineStatus.on_line);
             // 全局会话sessionId列表，供会话管理
-            //!!RedisUtil.lpush(ZHENG_Sys_SERVER_SESSION_IDS, sessionId.toString());
+            RedisUtil.lpush(SERVER_SESSION_IDS, sessionId.toString());
             // 默认验证帐号密码正确，创建code
             String code = UUID.randomUUID().toString();
             // 全局会话的code
-            //!!RedisUtil.set(ZHENG_Sys_SERVER_SESSION_ID + "_" + sessionId, code, (int) subject.getSession().getTimeout() / 1000);
+            RedisUtil.set(SERVER_SESSION_ID + "_" + sessionId, code, (int) subject.getSession().getTimeout() / 1000);
             // code校验值
-            //!!RedisUtil.set(ZHENG_Sys_SERVER_CODE + "_" + code, code, (int) subject.getSession().getTimeout() / 1000);
+            RedisUtil.set(SERVER_CODE + "_" + code, code, (int) subject.getSession().getTimeout() / 1000);
         }
         // 回跳登录前地址
         String backurl = request.getParameter("backurl");
         if (StringUtils.isBlank(backurl)) {
-            return new Result(ResultConstant.SUCCESS, "/");
+            return new Result(ResultConstant.SUCCESS, "/manage/index");
         } else {
             return new Result(ResultConstant.SUCCESS, backurl);
         }
