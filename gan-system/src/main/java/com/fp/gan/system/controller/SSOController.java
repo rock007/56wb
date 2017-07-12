@@ -1,5 +1,6 @@
 package com.fp.gan.system.controller;
 
+import com.fp.gan.core.app.AppConst;
 import com.fp.gan.core.shiro.session.SystemSession;
 import com.fp.gan.core.shiro.session.SystemSessionDao;
 import com.fp.gan.core.utils.RedisUtil;
@@ -42,11 +43,11 @@ public class SSOController extends BaseController {
 
     private final static Logger _log = LoggerFactory.getLogger(SSOController.class);
     // 全局会话key
-    private final static String SERVER_SESSION_ID = "server-session-id";
+    //private final static String SERVER_SESSION_ID = "server-session-id";
     // 全局会话key列表
-    private final static String SERVER_SESSION_IDS = "server-session-ids";
+    //private final static String SERVER_SESSION_IDS = "server-session-ids";
     // code key
-    private final static String SERVER_CODE = "server-code";
+    //private final static String SERVER_CODE = "server-code";
 
     @Autowired
     SysSystemService sysSystemService;
@@ -81,7 +82,7 @@ public class SSOController extends BaseController {
         Session session = subject.getSession();
         String serverSessionId = session.getId().toString();
         // 判断是否已登录，如果已登录，则回跳
-        String code =""; //RedisUtil.get(ZHENG_Sys_SERVER_SESSION_ID + "_" + serverSessionId);
+        String code =RedisUtil.get(AppConst.SERVER_SESSION_ID + "_" + serverSessionId);
         // code校验值
         if (StringUtils.isNotBlank(code)) {
             // 回跳
@@ -91,9 +92,9 @@ public class SSOController extends BaseController {
                 backurl = "/";
             } else {
                 if (backurl.contains("?")) {
-                    backurl += "&Sys_code=" + code + "&Sys_username=" + username;
+                    backurl += "&code=" + code + "&username=" + username;
                 } else {
-                    backurl += "?Sys_code=" + code + "&Sys_username=" + username;
+                    backurl += "?code=" + code + "&username=" + username;
                 }
             }
             _log.debug("认证中心帐号通过，带code回跳：{}", backurl);
@@ -118,7 +119,7 @@ public class SSOController extends BaseController {
         Session session = subject.getSession();
         String sessionId = session.getId().toString();
         // 判断是否已登录，如果已登录，则回跳，防止重复登录
-        String hasCode = "";//RedisUtil.get(ZHENG_Sys_SERVER_SESSION_ID + "_" + sessionId);
+        String hasCode = RedisUtil.get(AppConst.SERVER_SESSION_ID + "_" + sessionId);
         // code校验值
         if (StringUtils.isBlank(hasCode)) {
             // 使用shiro认证
@@ -140,13 +141,13 @@ public class SSOController extends BaseController {
             // 更新session状态
             systemSessionDao.updateStatus(sessionId, SystemSession.OnlineStatus.on_line);
             // 全局会话sessionId列表，供会话管理
-            RedisUtil.lpush(SERVER_SESSION_IDS, sessionId.toString());
+            RedisUtil.lpush(AppConst.SERVER_SESSION_IDS, sessionId.toString());
             // 默认验证帐号密码正确，创建code
             String code = UUID.randomUUID().toString();
             // 全局会话的code
-            RedisUtil.set(SERVER_SESSION_ID + "_" + sessionId, code, (int) subject.getSession().getTimeout() / 1000);
+            RedisUtil.set(AppConst.SERVER_SESSION_ID + "_" + sessionId, code, (int) subject.getSession().getTimeout() / 1000);
             // code校验值
-            RedisUtil.set(SERVER_CODE + "_" + code, code, (int) subject.getSession().getTimeout() / 1000);
+            RedisUtil.set(AppConst.SERVER_CODE + "_" + code, code, (int) subject.getSession().getTimeout() / 1000);
         }
         // 回跳登录前地址
         String backurl = request.getParameter("backurl");
@@ -167,7 +168,6 @@ public class SSOController extends BaseController {
         }
         return new Result(ResultConstant.SUCCESS, code);
     }
-
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request) {

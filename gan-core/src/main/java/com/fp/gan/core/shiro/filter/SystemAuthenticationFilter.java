@@ -1,6 +1,8 @@
 package com.fp.gan.core.shiro.filter;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fp.gan.core.app.AppConst;
+import com.fp.gan.core.utils.PropertiesFileUtil;
 import com.fp.gan.core.utils.RedisUtil;
 import com.fp.gan.core.utils.RequestParameterUtil;
 
@@ -42,12 +44,9 @@ public class SystemAuthenticationFilter extends AuthenticationFilter {
     private final static Logger _log = LoggerFactory.getLogger(SystemAuthenticationFilter.class);
 
     // 局部会话key
-    private final static String CLIENT_SESSION_ID = "client-session-id";
+    //private final static String CLIENT_SESSION_ID = "client-session-id";
     // 单点同一个code所有局部会话key
-    private final static String CLIENT_SESSION_IDS = "client-session-ids";
-
-    //@Autowired
-    //SystemSessionDao upmsSessionDao;
+    //private final static String CLIENT_SESSION_IDS = "client-session-ids";
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
@@ -69,12 +68,12 @@ public class SystemAuthenticationFilter extends AuthenticationFilter {
         Session session = subject.getSession();
 
         // 判断请求类型
-        String upmsType ="server";// PropertiesFileUtil.getInstance("zheng-upms-client").get("zheng.upms.type");
-        session.setAttribute("UPMS_TYPE", upmsType);
-        if ("client".equals(upmsType)) {
+        String ssoType = PropertiesFileUtil.getInstance("application").get("sso.type");
+        session.setAttribute(AppConst.SSO_TYPE, ssoType);
+        if ("client".equals(ssoType)) {
             return validateClient(request, response);
         }
-        if ("server".equals(upmsType)) {
+        if ("server".equals(ssoType)) {
             return subject.isAuthenticated();
         }
         return false;
@@ -82,14 +81,14 @@ public class SystemAuthenticationFilter extends AuthenticationFilter {
 
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
-        StringBuffer sso_server_url =new StringBuffer();//PropertiesFileUtil.getInstance("zheng-upms-client").get("zheng.upms.sso.server.url")
+        StringBuffer sso_server_url =new StringBuffer(PropertiesFileUtil.getInstance("application").get("sso.server.url"));
         // server需要登录
-        String upmsType ="server";//PropertiesFileUtil.getInstance("zheng-upms-client").get("zheng.upms.type");
-        if ("server".equals(upmsType)) {
+        String ssoType =PropertiesFileUtil.getInstance("application").get("sso.type");
+        if ("server".equals(ssoType)) {
             WebUtils.toHttp(response).sendRedirect(sso_server_url.append("/sso/login").toString());
             return false;
         }
-        sso_server_url.append("/sso/index").append("?").append("appid").append("=").append("app_id_11");//PropertiesFileUtil.getInstance("zheng-upms-client").get("zheng.upms.appID")
+        sso_server_url.append("/sso/index").append("?").append("appid").append("=").append(PropertiesFileUtil.getInstance("application").get("sso.appID"));
         // 回跳地址
         HttpServletRequest httpServletRequest = WebUtils.toHttp(request);
         StringBuffer backurl = httpServletRequest.getRequestURL();
@@ -112,12 +111,12 @@ public class SystemAuthenticationFilter extends AuthenticationFilter {
         String sessionId = session.getId().toString();
         int timeOut = (int) session.getTimeout() / 1000;
         // 判断局部会话是否登录
-        String cacheClientSession = RedisUtil.get(CLIENT_SESSION_ID + "_" + session.getId());
+        String cacheClientSession = RedisUtil.get(AppConst.CLIENT_SESSION_ID + "_" + session.getId());
         if (StringUtils.isNotBlank(cacheClientSession)) {
             // 更新code有效期
-            RedisUtil.set(CLIENT_SESSION_ID + "_" + sessionId, cacheClientSession, timeOut);
+            RedisUtil.set(AppConst.CLIENT_SESSION_ID + "_" + sessionId, cacheClientSession, timeOut);
             Jedis jedis = RedisUtil.getJedis();
-            jedis.expire(CLIENT_SESSION_IDS + "_" + cacheClientSession, timeOut);
+            jedis.expire(AppConst.CLIENT_SESSION_IDS + "_" + cacheClientSession, timeOut);
             jedis.close();
             // 移除url中的code参数
             if (null != request.getParameter("code")) {
@@ -133,12 +132,12 @@ public class SystemAuthenticationFilter extends AuthenticationFilter {
             }
         }
         // 判断是否有认证中心code
-        String code = request.getParameter("upms_code");
+        String code = request.getParameter("code");
         // 已拿到code
         if (StringUtils.isNotBlank(code)) {
             // HttpPost去校验code
             try {
-                StringBuffer sso_server_url = new StringBuffer();//PropertiesFileUtil.getInstance("zheng-upms-client").get("zheng.upms.sso.server.url")
+                StringBuffer sso_server_url = new StringBuffer(PropertiesFileUtil.getInstance("application").get("sso.server.url"));
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httpPost = new HttpPost(sso_server_url.toString() + "/sso/code");
 
@@ -152,10 +151,10 @@ public class SystemAuthenticationFilter extends AuthenticationFilter {
                     JSONObject result = JSONObject.parseObject(EntityUtils.toString(httpEntity));
                     if (1 == result.getIntValue("code") && result.getString("data").equals(code)) {
                         // code校验正确，创建局部会话
-                        RedisUtil.set(CLIENT_SESSION_ID + "_" + sessionId, code, timeOut);
+                        RedisUtil.set(AppConst.CLIENT_SESSION_ID + "_" + sessionId, code, timeOut);
                         // 保存code对应的局部会话sessionId，方便退出操作
-                        RedisUtil.sadd(CLIENT_SESSION_IDS + "_" + code, sessionId, timeOut);
-                        _log.debug("当前code={}，对应的注册系统个数：{}个", code, RedisUtil.getJedis().scard(CLIENT_SESSION_IDS + "_" + code));
+                        RedisUtil.sadd(AppConst.CLIENT_SESSION_IDS + "_" + code, sessionId, timeOut);
+                        _log.debug("当前code={}，对应的注册系统个数：{}个", code, RedisUtil.getJedis().scard(AppConst.CLIENT_SESSION_IDS + "_" + code));
                         // 移除url中的token参数
                         String backUrl = RequestParameterUtil.getParameterWithOutCode(WebUtils.toHttp(request));
                         // 返回请求资源

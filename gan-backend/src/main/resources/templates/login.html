@@ -13,8 +13,8 @@
 
 		<div class="col-md-8 col-md-offset-8 login-form">
 
-			<form th:action="@{login.html}" method="post">
-
+			<form th:action="@{login}" method="post">
+				<input type="hidden" name="backurl" th:value="${backurl}"/>
 				<div class="form-group">
 					<input type="text" name="username" class="form-control" placeholder="输入用户名"/>
 				</div>
