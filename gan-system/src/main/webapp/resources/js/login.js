@@ -1,4 +1,5 @@
 $(function() {
+
 	// Waves初始化
 	Waves.displayEffect();
 	// 输入框获取焦点后出现下划线

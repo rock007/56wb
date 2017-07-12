@@ -23,8 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ShiroAuthRealm extends AuthorizingRealm{
 
-	@Autowired
-	private SysUserService sysUserService;
+	//@Autowired
+	//private SysUserService sysUserService;
 
 	/**
 	 * 认证回调函数,登录时调用.

@@ -1,6 +1,7 @@
 package com.fp.gan.backend.controller;
 
 import com.fp.gan.backend.app.AppUtil;
+import com.fp.gan.core.base.BaseController;
 import com.fp.gan.core.model.JsonMsg;
 import com.fp.gan.db.entity.blog.Article;
 import com.fp.gan.db.repository.BlogArticleRepository;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping(value="/blog")
-public class BlogController extends SuperController{
+public class BlogController extends BaseController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BlogController.class);
 	 
@@ -60,12 +61,10 @@ public class BlogController extends SuperController{
 	@RequestMapping(value="/edit.html",method = RequestMethod.GET)
 	public  String edit(Map<String, Object> model) {
 		
-		navs.put("博客", "/list.html");		
-		navs.put("编辑", "");		
-		model.put("navs", navs);
+		//navs.put("博客", "/list.html");
+		//navs.put("编辑", "");
+		//model.put("navs", navs);
 
-		model.put("navs", navs);
-		
 		model.put("time", new Date());
 		model.put("message", "hello the world");
 		return "blog/edit";

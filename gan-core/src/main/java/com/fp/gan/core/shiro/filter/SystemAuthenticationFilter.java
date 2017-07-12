@@ -15,6 +15,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -50,8 +51,23 @@ public class SystemAuthenticationFilter extends AuthenticationFilter {
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
+
+        String curUrl = getRequestUrl(request);
+
+        System.out.println("getRequestURI ==" + curUrl);
+
+        if(curUrl.indexOf("/resources/")>=0
+                ||curUrl.indexOf("/plugsins/")>=0 ||curUrl.indexOf("/fonts/")>=0
+                ||curUrl.indexOf("/js/")>=0||curUrl.indexOf("/css/")>=0
+                ||curUrl.indexOf("/images/")>=0
+                ||curUrl.indexOf("/sso/")>=0
+                        ||curUrl.equals("/")) {
+            return true;
+        }
+
         Subject subject = getSubject(request, response);
         Session session = subject.getSession();
+
         // 判断请求类型
         String upmsType ="server";// PropertiesFileUtil.getInstance("zheng-upms-client").get("zheng.upms.type");
         session.setAttribute("UPMS_TYPE", upmsType);
@@ -145,7 +161,7 @@ public class SystemAuthenticationFilter extends AuthenticationFilter {
                         // 返回请求资源
                         try {
                             // client无密认证
-                            String username = request.getParameter("upms_username");
+                            String username = request.getParameter("username");
                             subject.login(new UsernamePasswordToken(username, ""));
                             HttpServletResponse httpServletResponse = WebUtils.toHttp(response);
                             httpServletResponse.sendRedirect(backUrl.toString());
@@ -164,4 +180,15 @@ public class SystemAuthenticationFilter extends AuthenticationFilter {
         return false;
     }
 
+    /***
+     * get full path
+     * @param request
+     * @return
+     */
+    private String getRequestUrl(ServletRequest request) {
+        HttpServletRequest req = (HttpServletRequest)request;
+        String queryString = req.getQueryString();
+        queryString = org.apache.commons.lang3.StringUtils.isBlank(queryString)?"": "?"+queryString;
+        return req.getRequestURI()+queryString;
+    }
 }

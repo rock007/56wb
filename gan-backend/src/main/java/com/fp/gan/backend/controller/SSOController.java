@@ -1,7 +1,11 @@
 package com.fp.gan.backend.controller;
 
 
+import com.fp.gan.core.base.BaseController;
 import com.fp.gan.core.model.JsonResult;
+import com.fp.gan.core.shiro.session.SystemSession;
+import com.fp.gan.core.shiro.session.SystemSessionDao;
+import com.fp.gan.core.utils.RedisUtil;
 import com.fp.gan.db.entity.sys.User;
 import com.fp.gan.db.service.SysUserService;
 import org.apache.commons.lang.BooleanUtils;
@@ -32,7 +36,7 @@ import java.util.UUID;
  */
 @Controller
 @RequestMapping("/sso")
-public class SSOController  {
+public class SSOController extends BaseController {
 
     private final static Logger _log = LoggerFactory.getLogger(SSOController.class);
     // 全局会话key
@@ -42,13 +46,13 @@ public class SSOController  {
     // code key
     private final static String SERVER_CODE = "server-code";
 
-    //@Autowired
-    //SysSystemService sysSystemService;
-
     @Autowired
     SysUserService sysUserService;
 
-    @RequestMapping(value = "/login.html", method = RequestMethod.GET)
+    @Autowired
+    SystemSessionDao systemSessionDao;
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(HttpServletRequest request) {
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
@@ -75,7 +79,7 @@ public class SSOController  {
         return "login";
     }
 
-    @RequestMapping(value = "/login.html", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, HttpServletResponse response,
                         Model model) {
         String username = request.getParameter("username");
@@ -138,15 +142,15 @@ public class SSOController  {
                 return "login";
             }
             // 更新session状态
-           //!! SysSessionDao.updateStatus(sessionId, SysSession.OnlineStatus.on_line);
+            systemSessionDao.updateStatus(sessionId, SystemSession.OnlineStatus.on_line);
             // 全局会话sessionId列表，供会话管理
-            //!!RedisUtil.lpush(ZHENG_Sys_SERVER_SESSION_IDS, sessionId.toString());
+            RedisUtil.lpush(SERVER_SESSION_IDS, sessionId.toString());
             // 默认验证帐号密码正确，创建code
             String code = UUID.randomUUID().toString();
             // 全局会话的code
-            //!!RedisUtil.set(ZHENG_Sys_SERVER_SESSION_ID + "_" + sessionId, code, (int) subject.getSession().getTimeout() / 1000);
+            RedisUtil.set(SERVER_SESSION_ID + "_" + sessionId, code, (int) subject.getSession().getTimeout() / 1000);
             // code校验值
-            //!!RedisUtil.set(ZHENG_Sys_SERVER_CODE + "_" + code, code, (int) subject.getSession().getTimeout() / 1000);
+            RedisUtil.set(SERVER_CODE + "_" + code, code, (int) subject.getSession().getTimeout() / 1000);
         }
         // 回跳登录前地址
         String backurl = request.getParameter("backurl");
@@ -161,7 +165,7 @@ public class SSOController  {
     }
 
 
-    @RequestMapping(value = "/logout.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request) {
         // shiro退出登录
         SecurityUtils.getSubject().logout();
@@ -173,7 +177,7 @@ public class SSOController  {
         return "redirect:" + redirectUrl;
     }
 
-    @RequestMapping("/unauthorized.html")
+    @RequestMapping("/unauthorized")
     public String unauthorized(Map<String, Object> model){
 
         return "unauthorized";
