@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.baidu.unbiz.fluentvalidator.ComplexResult;
 import com.baidu.unbiz.fluentvalidator.FluentValidator;
 import com.baidu.unbiz.fluentvalidator.ResultCollectors;
+import com.fp.gan.core.validator.LengthValidator;
 import com.fp.gan.system.comm.constant.Result;
 import com.fp.gan.system.comm.constant.ResultConstant;
 import com.fp.gan.system.controller.BaseController;
@@ -22,7 +23,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import com.fp.gan.system.comm.validator.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;

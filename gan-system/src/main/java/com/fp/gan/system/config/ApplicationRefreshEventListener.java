@@ -1,6 +1,7 @@
 package com.fp.gan.system.config;
 
-import com.fp.gan.system.comm.annotation.BaseService;
+
+import com.fp.gan.core.annotation.MyBatisService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -21,7 +22,7 @@ public class ApplicationRefreshEventListener implements ApplicationListener<Cont
         if(null == contextRefreshedEvent.getApplicationContext().getParent()) {
             _log.debug(">>>>> spring初始化完毕 <<<<<");
             // spring初始化完毕后，通过反射调用所有使用BaseService注解的initMapper方法
-            Map<String, Object> baseServices = contextRefreshedEvent.getApplicationContext().getBeansWithAnnotation(BaseService.class);
+            Map<String, Object> baseServices = contextRefreshedEvent.getApplicationContext().getBeansWithAnnotation(MyBatisService.class);
             for(Object service : baseServices.values()) {
                 _log.debug(">>>>> {}.initMapper()", service.getClass().getName());
                 try {

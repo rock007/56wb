@@ -1,4 +1,4 @@
-package com.fp.gan.system.comm.validator;
+package com.fp.gan.core.validator;
 
 import com.baidu.unbiz.fluentvalidator.ValidationError;
 import com.baidu.unbiz.fluentvalidator.Validator;
@@ -6,9 +6,9 @@ import com.baidu.unbiz.fluentvalidator.ValidatorContext;
 import com.baidu.unbiz.fluentvalidator.ValidatorHandler;
 
 /**
- * 长度校验
+ * 校验数字大小
  */
-public class LengthValidator extends ValidatorHandler<String> implements Validator<String> {
+public class SizeValidator extends ValidatorHandler<Integer> implements Validator<Integer> {
 
     private int min;
 
@@ -16,19 +16,19 @@ public class LengthValidator extends ValidatorHandler<String> implements Validat
 
     private String fieldName;
 
-    public LengthValidator(int min, int max, String fieldName) {
+    public SizeValidator(int min, int max, String fieldName) {
         this.min = min;
         this.max = max;
         this.fieldName = fieldName;
     }
 
     @Override
-    public boolean validate(ValidatorContext context, String s) {
-        if (null == s || s.length() > max || s.length() < min) {
-            context.addError(ValidationError.create(String.format("%s长度必须介于%s~%s之间！", fieldName, min, max))
+    public boolean validate(ValidatorContext context, Integer integer) {
+        if (null == integer || integer.intValue() > max || integer.intValue() < min) {
+            context.addError(ValidationError.create(String.format("%s必须大于%s，小于%s", fieldName, max, min))
                     .setErrorCode(-1)
                     .setField(fieldName)
-                    .setInvalidValue(s));
+                    .setInvalidValue(integer));
             return false;
         }
         return true;

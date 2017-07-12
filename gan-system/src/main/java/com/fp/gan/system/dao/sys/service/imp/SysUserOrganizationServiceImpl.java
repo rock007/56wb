@@ -1,6 +1,6 @@
 package com.fp.gan.system.dao.sys.service.imp;
 
-import com.fp.gan.system.comm.annotation.BaseService;
+import com.fp.gan.core.annotation.MyBatisService;
 import com.fp.gan.system.comm.base.BaseServiceImpl;
 import com.fp.gan.system.dao.sys.mapper.SysUserOrganizationMapper;
 import com.fp.gan.system.dao.sys.model.SysUserOrganization;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 */
 @Service
 @Transactional
-@BaseService
+@MyBatisService
 public class SysUserOrganizationServiceImpl extends BaseServiceImpl<SysUserOrganizationMapper, SysUserOrganization, SysUserOrganizationExample> implements SysUserOrganizationService {
 
     private static Logger _log = LoggerFactory.getLogger(SysUserOrganizationServiceImpl.class);

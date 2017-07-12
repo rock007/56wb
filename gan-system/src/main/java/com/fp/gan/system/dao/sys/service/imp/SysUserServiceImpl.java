@@ -1,6 +1,6 @@
 package com.fp.gan.system.dao.sys.service.imp;
 
-import com.fp.gan.system.comm.annotation.BaseService;
+import com.fp.gan.core.annotation.MyBatisService;
 import com.fp.gan.system.comm.base.BaseServiceImpl;
 import com.fp.gan.system.dao.sys.mapper.SysUserMapper;
 import com.fp.gan.system.dao.sys.model.SysUser;
@@ -20,7 +20,7 @@ import java.util.List;
 */
 @Service
 @Transactional
-@BaseService
+@MyBatisService
 public class SysUserServiceImpl extends BaseServiceImpl<SysUserMapper, SysUser, SysUserExample> implements SysUserService {
 
     private static Logger _log = LoggerFactory.getLogger(SysUserServiceImpl.class);

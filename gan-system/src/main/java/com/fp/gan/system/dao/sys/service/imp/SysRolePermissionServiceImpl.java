@@ -2,7 +2,8 @@ package com.fp.gan.system.dao.sys.service.imp;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.fp.gan.system.comm.annotation.BaseService;
+import com.fp.gan.core.annotation.MyBatisService;
+
 import com.fp.gan.system.comm.base.BaseServiceImpl;
 import com.fp.gan.system.dao.sys.mapper.SysRolePermissionMapper;
 import com.fp.gan.system.dao.sys.model.SysRolePermission;
@@ -23,7 +24,7 @@ import java.util.List;
 */
 @Service
 @Transactional
-@BaseService
+@MyBatisService
 public class SysRolePermissionServiceImpl extends BaseServiceImpl<SysRolePermissionMapper, SysRolePermission, SysRolePermissionExample> implements SysRolePermissionService {
 
     private static Logger _log = LoggerFactory.getLogger(SysRolePermissionServiceImpl.class);

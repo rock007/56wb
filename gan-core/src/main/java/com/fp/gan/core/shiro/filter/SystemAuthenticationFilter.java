@@ -3,7 +3,6 @@ package com.fp.gan.core.shiro.filter;
 import com.alibaba.fastjson.JSONObject;
 import com.fp.gan.core.utils.RedisUtil;
 import com.fp.gan.core.utils.RequestParameterUtil;
-import com.fp.gan.system.comm.shiro.session.SystemSessionDao;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;

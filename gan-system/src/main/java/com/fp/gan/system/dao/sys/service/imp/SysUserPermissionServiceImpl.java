@@ -3,7 +3,7 @@ package com.fp.gan.system.dao.sys.service.imp;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-import com.fp.gan.system.comm.annotation.BaseService;
+import com.fp.gan.core.annotation.MyBatisService;
 import com.fp.gan.system.comm.base.BaseServiceImpl;
 import com.fp.gan.system.dao.sys.mapper.SysUserPermissionMapper;
 import com.fp.gan.system.dao.sys.model.SysUserPermission;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 */
 @Service
 @Transactional
-@BaseService
+@MyBatisService
 public class SysUserPermissionServiceImpl extends BaseServiceImpl<SysUserPermissionMapper, SysUserPermission, SysUserPermissionExample> implements SysUserPermissionService {
 
     private static Logger _log = LoggerFactory.getLogger(SysUserPermissionServiceImpl.class);

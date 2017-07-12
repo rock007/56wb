@@ -3,6 +3,7 @@ package com.fp.gan.system.controller.manage;
 import com.baidu.unbiz.fluentvalidator.ComplexResult;
 import com.baidu.unbiz.fluentvalidator.FluentValidator;
 import com.baidu.unbiz.fluentvalidator.ResultCollectors;
+import com.fp.gan.core.validator.LengthValidator;
 import com.fp.gan.system.comm.constant.Result;
 import com.fp.gan.system.comm.constant.ResultConstant;
 import com.fp.gan.system.controller.BaseController;
@@ -17,8 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
-import com.fp.gan.system.comm.validator.*;
 
 import java.util.HashMap;
 import java.util.List;

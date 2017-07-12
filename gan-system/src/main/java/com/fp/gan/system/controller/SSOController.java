@@ -1,10 +1,11 @@
 package com.fp.gan.system.controller;
 
+import com.fp.gan.core.shiro.session.SystemSession;
+import com.fp.gan.core.shiro.session.SystemSessionDao;
+import com.fp.gan.core.utils.RedisUtil;
 import com.fp.gan.system.comm.constant.Result;
 import com.fp.gan.system.comm.constant.ResultConstant;
-import com.fp.gan.system.comm.shiro.session.SystemSession;
-import com.fp.gan.system.comm.shiro.session.SystemSessionDao;
-import com.fp.gan.system.comm.util.RedisUtil;
+
 import com.fp.gan.system.dao.sys.model.SysSystemExample;
 import com.fp.gan.system.dao.sys.service.SysSystemService;
 import com.fp.gan.system.dao.sys.service.SysUserService;

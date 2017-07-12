@@ -45,7 +45,7 @@
 	<!-- 自定义用户登录验证-->
 	<bean id="myUserAuthFilter" class="com.fp.gan.system.config.security.UserAuthenticationFilter"></bean>
 
-	<bean id="systemAuthenticationFilter" class="com.fp.gan.system.comm.shiro.filter.SystemAuthenticationFilter"/>
+	<bean id="systemAuthenticationFilter" class="com.fp.gan.core.shiro.filter.SystemAuthenticationFilter"/>
 
 	<!-- 用户授权信息Cache, 采用EhCache -->
 	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
@@ -66,7 +66,7 @@
 	</bean>
 
 	<!-- 强制退出会话过滤器 -->
-	<bean id="systemSessionForceLogout" class="com.fp.gan.system.comm.shiro.filter.SystemSessionForceLogoutFilter"/>
+	<bean id="systemSessionForceLogout" class="com.fp.gan.core.shiro.filter.SystemSessionForceLogoutFilter"/>
 
 	<!-- 会话管理器 -->
 	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
@@ -84,7 +84,7 @@
 	</bean>
 
 	<!-- 会话DAO，可重写，持久化session -->
-	<bean id="sessionDAO" class="com.fp.gan.system.comm.shiro.session.SystemSessionDao"/>
+	<bean id="sessionDAO" class="com.fp.gan.core.shiro.session.SystemSessionDao"/>
 
 	<!-- 会话Cookie模板 -->
 	<bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
@@ -97,10 +97,10 @@
 	</bean>
 
 	<!-- 会话监听器 -->
-	<bean id="sessionListener" class="com.fp.gan.system.comm.shiro.listener.SystemSessionListener"/>
+	<bean id="sessionListener" class="com.fp.gan.core.shiro.listener.SystemSessionListener"/>
 
 	<!-- session工厂 -->
-	<bean id="sessionFactory" class="com.fp.gan.system.comm.shiro.session.SystemSessionFactory"/>
+	<bean id="sessionFactory" class="com.fp.gan.core.shiro.session.SystemSessionFactory"/>
 
 	<!-- rememberMe管理器 -->
 	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">

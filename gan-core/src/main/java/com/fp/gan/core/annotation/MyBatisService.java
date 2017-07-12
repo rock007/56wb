@@ -1,4 +1,4 @@
-package com.fp.gan.system.comm.annotation;
+package com.fp.gan.core.annotation;
 
 import java.lang.annotation.*;
 
@@ -8,5 +8,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BaseService {
+public @interface MyBatisService {
 }
