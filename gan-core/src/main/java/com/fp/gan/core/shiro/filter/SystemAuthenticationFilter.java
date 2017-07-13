@@ -56,7 +56,7 @@ public class SystemAuthenticationFilter extends AuthenticationFilter {
         System.out.println("getRequestURI ==" + curUrl);
 
         if(curUrl.indexOf("/resources/")>=0
-                ||curUrl.indexOf("/plugsins/")>=0 ||curUrl.indexOf("/fonts/")>=0
+                ||curUrl.indexOf("/plugins/")>=0 ||curUrl.indexOf("/fonts/")>=0
                 ||curUrl.indexOf("/js/")>=0||curUrl.indexOf("/css/")>=0
                 ||curUrl.indexOf("/images/")>=0
                 ||curUrl.indexOf("/sso/")>=0

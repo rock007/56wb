@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ApexVcsIndex">
+    <index-move-record>
+      <option name="firstPath" value="/gan-home/src/main/resources/templates/Home/Contact.html" />
+      <option name="path" value="/gan-home/src/main/resources/templates/pages/Contact.html" />
+    </index-move-record>
+    <index-move-record>
+      <option name="firstPath" value="/gan-home/src/main/resources/templates/Home/Index.html" />
+      <option name="path" value="/gan-home/src/main/resources/templates/pages/Index.html" />
+    </index-move-record>
+  </component>
+</project>

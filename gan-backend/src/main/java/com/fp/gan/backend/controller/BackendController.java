@@ -20,10 +20,10 @@ public class BackendController extends BaseController {
 		return "index";
 	}
 
-	@RequestMapping("/doashboard")
+	@RequestMapping("/dashboard")
 	public String dashboard(Map<String, Object> model){
 
-		return "doashboard";
+		return "dashboard";
 	}
 
 

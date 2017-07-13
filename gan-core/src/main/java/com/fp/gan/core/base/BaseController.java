@@ -49,7 +49,7 @@ public abstract class BaseController {
      * not work
      * @param model
      */
-    @ModelAttribute
+    //@ModelAttribute
     public void populateModel(Model model) {
         model.addAttribute("host", "http://127.0.0.1:1002");
     }

@@ -27,7 +27,7 @@ public class HomeController {
 		
 		model.put("menu", "home");
 		model.put("message", "hello the world");
-		return "Home/Index";
+		return "pages/Index";
 	}
 	
 	@RequestMapping("/login.html")

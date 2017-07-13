@@ -92,6 +92,30 @@ public class ActLog {
 	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
-	
+
+
+	public ActLog() {
+		super();
+	}
+
+	/***
+	 *
+	 * @param title
+	 * @param msg
+	 * @param content
+	 * @param error
+	 * @param create_user
+	 * @param create_ip
+	 */
+	public ActLog(String title, String msg, String content, String error, String create_user, String create_ip) {
+		super();
+		this.title = title;
+		this.msg = msg;
+		this.content = content;
+		this.error = error;
+		this.create_user = create_user;
+		this.create_ip = create_ip;
+		this.create_date=new Date();
+	}
 	
 }

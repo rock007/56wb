@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+  	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">XXX</title>
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <link href="/plugins/bootstrap-3.3.0/css/bootstrap.css" rel="stylesheet" />
+	<link href="/css/Site.css" rel="stylesheet" /> 
+  </head>
+  <body>
+    <!-- 
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+             <ul class="nav navbar-nav navbar-right">
+        		<li><a href="/Account/Register" id="registerLink">注册</a></li>
+        		<li><a href="/Account/Login" id="loginLink">登录</a></li>
+    		</ul>
+        </div>
+    </div>
+     -->
+    
+    <div class="container">
+
+        <div class="navbar ">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-left">
+
+                </a>
+            </div>
+                
+            <div style="padding-top:30px;">
+                <ul class="nav  nav-pills">                
+                    <li th:class="${menu==''?'active':''}" ><a href="/">首页</a></li>
+                    <li th:class="${menu==''?'active':''}" ><a href="/web-make">AAA</a></li>
+                    <li th:class="${menu==''?'active':''}" ><a href="/app-dev">BBB</a></li>
+                    <li th:class="${menu==''?'active':''}" ><a href="/about-us.html">CCC</a></li>
+                </ul>
+                
+            </div>
+
+        </div>
+
+    </div>
+    
+    <a name="top"></a>
+    
+      <div class="container body-content" layout:fragment="content">
+        	这是母版内容页
+      </div>
+      
+    <div class="footer">
+        <p>
+            </p>
+        <p></p>
+        <p>© 2015 - 科技</p>
+        <p>
+            <a href="#top">Back to top</a>
+        </p>
+    </div>
+    
+    <script src="/plugins/jquery.1.12.4.min.js"></script>
+	<script src="/plugins/bootstrap-3.3.0/js/bootstrap.min.js"></script>
+    
+	<script src="/js/site.js"></script>    
+    <th:block layout:fragment="script"></th:block>
+    
+
+  </body>
+</html>

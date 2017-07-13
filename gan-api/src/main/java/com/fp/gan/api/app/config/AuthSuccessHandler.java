@@ -19,7 +19,7 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler{
 		
 		//String authorityStr= auth.getAuthorities().iterator().next().getAuthority();
 		
-		response.sendRedirect("/backend/");  	
+		response.sendRedirect("/api/");
 	}
 
 	

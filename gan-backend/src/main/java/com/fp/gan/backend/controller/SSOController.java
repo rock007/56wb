@@ -178,10 +178,8 @@ public class SSOController extends BaseController {
         // 回跳登录前地址
         String backurl = request.getParameter("backurl");
         if (StringUtils.isBlank(backurl)) {
-            return "redirect:/";
+            return "redirect:/dashboard";
         } else {
-
-            //return new JsonResult(1, backurl);
             return "redirect:" + backurl;
         }
     }
