@@ -10,7 +10,7 @@
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>sam.wb.WbApplication</start-class>
-		<java.version>1.7</java.version>	
+
   </properties>
 <dependencies>
 		

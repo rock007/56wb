@@ -48,3 +48,5 @@ realease/
 
 
 *.class
+*.imp
+.*
